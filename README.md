@@ -8,7 +8,7 @@ This is an **open source** repository for community-contributed materials, examp
 
 ### Important Note
 
-⚠️ **The web application code of WavePaint (https://www.wavepaint.net/) is NOT open source.** This repository is specifically for:
+ **The web application code of WavePaint (https://www.wavepaint.net/) is not open source.** This repository is specifically for:
 
 - 📚 Open source examples and tutorials
 - 🐛 Issue tracking and feature requests
