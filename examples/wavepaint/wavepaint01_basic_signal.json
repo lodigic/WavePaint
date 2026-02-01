@@ -1,0 +1,158 @@
+{
+  "sampleCount": 18,
+  "subStepCount": 0,
+  "arrowColor": "#ff0000",
+  "waveDromHead": {
+    "text": "WaveDrom example",
+    "tick": 0,
+    "every": 2
+  },
+  "waveDromFoot": {
+    "text": "Figure 100",
+    "tock": 9
+  },
+  "waveDromConfig": {
+    "hscale": 2
+  },
+  "signals": [
+    {
+      "name": "Alfa",
+      "type": "vector",
+      "color": "#000000",
+      "riseTime": 0.2,
+      "fallTime": 0.2,
+      "edgeArrow": "none",
+      "values": [
+        0,
+        1,
+        1,
+        2,
+        -1,
+        0,
+        1,
+        2,
+        2,
+        3,
+        4,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "labels": [
+        "l",
+        "h",
+        "h",
+        "Z",
+        "",
+        "0",
+        "u",
+        "d",
+        "d",
+        "3",
+        "4",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "segmentStyles": [
+        {},
+        {},
+        {},
+        {
+          "hatched": true,
+          "fill": "#ffffff"
+        },
+        {
+          "hatched": true
+        },
+        {
+          "fill": "#ffffff"
+        },
+        {},
+        {},
+        {},
+        {
+          "fill": "#ffffff"
+        },
+        {
+          "fill": "#ffffb4"
+        },
+        {
+          "fill": "#ffffb4"
+        },
+        {
+          "fill": "#ffe0b9"
+        },
+        {
+          "fill": "#b9e0ff"
+        },
+        {
+          "fill": "#ccfdfe"
+        },
+        {
+          "fill": "#cdfdc5"
+        },
+        {
+          "fill": "#f0c1fb"
+        },
+        {
+          "fill": "#f5c2c0"
+        }
+      ],
+      "waveDromColorCodes": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        "=",
+        null,
+        null,
+        null,
+        "2",
+        "3",
+        null,
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "waveDromChars": [
+        "0",
+        "1",
+        ".",
+        "z",
+        "x",
+        "=",
+        "u",
+        "d",
+        ".",
+        "2",
+        "3",
+        ".",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "waveDromWaveLength": 18
+    }
+  ],
+  "markers": [],
+  "timeJumps": [],
+  "timeSpanMarkers": [],
+  "arrows": [],
+  "textAnnotations": []
+}

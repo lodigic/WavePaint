@@ -1,0 +1,18 @@
+{
+  "signal": [
+    { "name": "clk", "wave": "P.........." },
+    ["Bus",
+      { "name": "valid", "wave": "0.1....0..." },
+      { "name": "ready", "wave": "0..1...0..." },
+      { "name": "data",  "wave": "x.=2=3=x...", "data": ["D0", "D1", "D2"] }
+    ],
+    {},
+    ["Control",
+      { "name": "start", "wave": "010........" },
+      { "name": "done",  "wave": "0......1.0." }
+    ]
+  ],
+  "edge": ["a~>b tsetup"],
+  "head": { "text": "Mixed Example", "tick": 0 },
+  "config": { "hscale": 2 }
+}

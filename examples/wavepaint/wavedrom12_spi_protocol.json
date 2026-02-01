@@ -1,0 +1,9 @@
+{
+  "signal": [
+    { "name": "SCLK", "wave": "0.p......|.." },
+    { "name": "SS_n", "wave": "10.......|.1" },
+    { "name": "MOSI", "wave": "x.345678x|.x", "data": ["B7", "B6", "B5", "B4", "B3", "B2", "B1", "B0"] },
+    { "name": "MISO", "wave": "x.=2=3=4x|.x", "data": ["D7", "D6", "D5", "D4", "D3", "D2", "D1", "D0"] }
+  ],
+  "config": { "hscale": 1 }
+}

@@ -1,0 +1,205 @@
+{
+  "sampleCount": 5,
+  "subStepCount": 0,
+  "arrowColor": "#ff0000",
+  "waveDromHead": {
+    "text": "WaveDrom example",
+    "tick": 0,
+    "every": 2
+  },
+  "waveDromFoot": {
+    "text": "Figure 100",
+    "tock": 9
+  },
+  "signals": [
+    {
+      "name": "clk",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0,
+      "fallTime": 0,
+      "edgeArrow": "none",
+      "values": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "labels": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "waveDromChars": [
+        "p",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null
+      ],
+      "waveDromWaveLength": 5,
+      "subSteps": 1
+    },
+    {
+      "name": "Data",
+      "type": "vector",
+      "color": "#000000",
+      "riseTime": 0,
+      "fallTime": 0,
+      "edgeArrow": "none",
+      "values": [
+        -1,
+        -1,
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        -1,
+        -1
+      ],
+      "labels": [
+        "",
+        "",
+        "a",
+        "a",
+        "b",
+        "b",
+        "c",
+        "c",
+        "",
+        ""
+      ],
+      "segmentStyles": [
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "fill": "#ffffb4"
+        },
+        {
+          "fill": "#ffffb4"
+        },
+        {
+          "fill": "#ffe0b9"
+        },
+        {
+          "fill": "#ffe0b9"
+        },
+        {
+          "fill": "#b9e0ff"
+        },
+        {
+          "fill": "#b9e0ff"
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        }
+      ],
+      "waveDromColorCodes": [
+        null,
+        null,
+        "3",
+        null,
+        "4",
+        null,
+        "5",
+        null,
+        null,
+        null
+      ],
+      "waveDromChars": [
+        "x",
+        null,
+        "3",
+        null,
+        "4",
+        null,
+        "5",
+        null,
+        "x",
+        null
+      ],
+      "waveDromHadData": true,
+      "waveDromData": "a b c",
+      "waveDromWaveLength": 5,
+      "subSteps": 1
+    },
+    {
+      "name": "Request",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.2,
+      "fallTime": 0.2,
+      "edgeArrow": "none",
+      "values": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "labels": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "waveDromChars": [
+        "0",
+        null,
+        "1",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        "0",
+        null
+      ],
+      "waveDromWaveLength": 5,
+      "subSteps": 1
+    }
+  ],
+  "markers": [],
+  "timeJumps": [],
+  "timeSpanMarkers": [],
+  "arrows": [],
+  "textAnnotations": []
+}
