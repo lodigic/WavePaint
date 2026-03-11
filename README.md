@@ -1,7 +1,7 @@
 # WavePaint
 
 Digital Timing Diagram GUI Editor
-
+![Wavepaint](img/digital-timing-editor-online.webp)
 ## About This Repository
 
 This is an **open source** repository for community-contributed materials, examples, and issue tracking related to [WavePaint](https://www.wavepaint.net/).
