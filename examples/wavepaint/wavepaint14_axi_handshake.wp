@@ -1,0 +1,803 @@
+{
+  "sampleCount": 9,
+  "subStepCount": 0,
+  "arrowColor": "#ff0000",
+  "waveDromHead": {
+    "text": "AXI4 Read Handshake"
+  },
+  "signals": [
+    {
+      "name": "ACLK",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0,
+      "fallTime": 0,
+      "edgeArrow": "positive",
+      "values": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "labels": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "clockMarkers": [
+        true,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true,
+        false
+      ],
+      "waveDromChars": [
+        "P",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null
+      ],
+      "waveDromWaveLength": 9,
+      "subSteps": 1
+    },
+    {
+      "name": "ARVALID",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.2,
+      "fallTime": 0.2,
+      "edgeArrow": "none",
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "labels": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "waveDromChars": [
+        "0",
+        null,
+        ".",
+        null,
+        "1",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        "0",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null
+      ],
+      "waveDromWaveLength": 9,
+      "subSteps": 1
+    },
+    {
+      "name": "ARREADY",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.2,
+      "fallTime": 0.2,
+      "edgeArrow": "none",
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "labels": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "waveDromChars": [
+        "0",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        "1",
+        null,
+        ".",
+        null,
+        "0",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null
+      ],
+      "waveDromWaveLength": 9,
+      "subSteps": 1
+    },
+    {
+      "name": "ARADDR",
+      "type": "vector",
+      "color": "#000000",
+      "riseTime": 0,
+      "fallTime": 0,
+      "edgeArrow": "none",
+      "values": [
+        -1,
+        -1,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "labels": [
+        "",
+        "",
+        "",
+        "",
+        "ADDR",
+        "ADDR",
+        "ADDR",
+        "ADDR",
+        "ADDR",
+        "ADDR",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "segmentStyles": [
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "fill": "#ffffff"
+        },
+        {
+          "fill": "#ffffff"
+        },
+        {
+          "fill": "#ffffff"
+        },
+        {
+          "fill": "#ffffff"
+        },
+        {
+          "fill": "#ffffff"
+        },
+        {
+          "fill": "#ffffff"
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        }
+      ],
+      "waveDromColorCodes": [
+        null,
+        null,
+        null,
+        null,
+        "=",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "waveDromChars": [
+        "x",
+        null,
+        ".",
+        null,
+        "=",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        "x",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null
+      ],
+      "waveDromHadData": true,
+      "waveDromData": [
+        "ADDR"
+      ],
+      "waveDromWaveLength": 9,
+      "subSteps": 1
+    },
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "riseTime": 0,
+      "fallTime": 0,
+      "edgeArrow": "none",
+      "values": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "labels": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "name": "RVALID",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.2,
+      "fallTime": 0.2,
+      "edgeArrow": "none",
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "labels": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "waveDromChars": [
+        "0",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        "1",
+        null,
+        ".",
+        null,
+        "0",
+        null,
+        ".",
+        null
+      ],
+      "waveDromWaveLength": 9,
+      "subSteps": 1
+    },
+    {
+      "name": "RREADY",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.2,
+      "fallTime": 0.2,
+      "edgeArrow": "none",
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "labels": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "waveDromChars": [
+        "0",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        "1",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null
+      ],
+      "waveDromWaveLength": 9,
+      "subSteps": 1
+    },
+    {
+      "name": "RDATA",
+      "type": "vector",
+      "color": "#000000",
+      "riseTime": 0,
+      "fallTime": 0,
+      "edgeArrow": "none",
+      "values": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "labels": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "DATA",
+        "DATA",
+        "DATA",
+        "DATA",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "segmentStyles": [
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "fill": "#ffffff"
+        },
+        {
+          "fill": "#ffffff"
+        },
+        {
+          "fill": "#ffffff"
+        },
+        {
+          "fill": "#ffffff"
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        }
+      ],
+      "waveDromColorCodes": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "=",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "waveDromChars": [
+        "x",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        "=",
+        null,
+        ".",
+        null,
+        "x",
+        null,
+        ".",
+        null
+      ],
+      "waveDromHadData": true,
+      "waveDromData": [
+        "DATA"
+      ],
+      "waveDromWaveLength": 9,
+      "subSteps": 1
+    },
+    {
+      "name": "RLAST",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.2,
+      "fallTime": 0.2,
+      "edgeArrow": "none",
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "labels": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "waveDromChars": [
+        "0",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        "1",
+        null,
+        ".",
+        null,
+        "0",
+        null,
+        ".",
+        null
+      ],
+      "waveDromWaveLength": 9,
+      "subSteps": 1
+    }
+  ],
+  "markers": [],
+  "timeJumps": [],
+  "timeSpanMarkers": [],
+  "arrows": [],
+  "textAnnotations": []
+}

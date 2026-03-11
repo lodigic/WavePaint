@@ -1,0 +1,807 @@
+{
+  "sampleCount": 8,
+  "subStepCount": 0,
+  "arrowColor": "#ff0000",
+  "waveDromHead": {
+    "text": "WaveDrom example",
+    "tick": 0,
+    "every": 2
+  },
+  "waveDromFoot": {
+    "text": "Figure 100",
+    "tock": 9
+  },
+  "waveDromConfig": {
+    "hscale": 2
+  },
+  "signals": [
+    {
+      "name": "clk",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0,
+      "fallTime": 0,
+      "edgeArrow": "positive",
+      "values": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "labels": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "clockMarkers": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+      ],
+      "waveDromChars": [
+        "p",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        "P",
+        null,
+        "p",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        "P",
+        null
+      ],
+      "waveDromWaveLength": 8,
+      "subSteps": 1
+    },
+    {
+      "name": "write",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.2,
+      "fallTime": 0.2,
+      "edgeArrow": "none",
+      "values": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "labels": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "waveDromChars": [
+        "0",
+        null,
+        "1",
+        null,
+        ".",
+        null,
+        "0",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null
+      ],
+      "waveDromWaveLength": 8,
+      "subSteps": 1,
+      "groupName": "Master/ctrl",
+      "groupColor": "#6496C8",
+      "groupPath": [
+        "Master",
+        "ctrl"
+      ]
+    },
+    {
+      "name": "read",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.2,
+      "fallTime": 0.2,
+      "edgeArrow": "none",
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "labels": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "waveDromChars": [
+        "0",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        "1",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        "0",
+        null
+      ],
+      "waveDromWaveLength": 8,
+      "subSteps": 1,
+      "groupName": "Master/ctrl",
+      "groupColor": "#6496C8",
+      "groupPath": [
+        "Master",
+        "ctrl"
+      ]
+    },
+    {
+      "name": "addr",
+      "type": "vector",
+      "color": "#000000",
+      "riseTime": 0,
+      "fallTime": 0,
+      "edgeArrow": "none",
+      "values": [
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1
+      ],
+      "labels": [
+        "",
+        "",
+        "A1",
+        "A1",
+        "A1",
+        "A1",
+        "",
+        "",
+        "A2",
+        "A2",
+        "A2",
+        "A2",
+        "A2",
+        "A2",
+        "",
+        ""
+      ],
+      "segmentStyles": [
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "fill": "#ffffb4"
+        },
+        {
+          "fill": "#ffffb4"
+        },
+        {
+          "fill": "#ffffb4"
+        },
+        {
+          "fill": "#ffffb4"
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "fill": "#ffe0b9"
+        },
+        {
+          "fill": "#ffe0b9"
+        },
+        {
+          "fill": "#ffe0b9"
+        },
+        {
+          "fill": "#ffe0b9"
+        },
+        {
+          "fill": "#ffe0b9"
+        },
+        {
+          "fill": "#ffe0b9"
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        }
+      ],
+      "waveDromColorCodes": [
+        null,
+        null,
+        "3",
+        null,
+        null,
+        null,
+        null,
+        null,
+        "4",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "waveDromChars": [
+        "x",
+        null,
+        "3",
+        null,
+        ".",
+        null,
+        "x",
+        null,
+        "4",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        "x",
+        null
+      ],
+      "waveDromHadData": true,
+      "waveDromData": "A1 A2",
+      "waveDromWaveLength": 8,
+      "subSteps": 1,
+      "groupName": "Master",
+      "groupColor": "#6496C8",
+      "groupPath": [
+        "Master"
+      ]
+    },
+    {
+      "name": "wdata",
+      "type": "vector",
+      "color": "#000000",
+      "riseTime": 0,
+      "fallTime": 0,
+      "edgeArrow": "none",
+      "values": [
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "labels": [
+        "",
+        "",
+        "D1",
+        "D1",
+        "D1",
+        "D1",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "segmentStyles": [
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "fill": "#ffffb4"
+        },
+        {
+          "fill": "#ffffb4"
+        },
+        {
+          "fill": "#ffffb4"
+        },
+        {
+          "fill": "#ffffb4"
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        }
+      ],
+      "waveDromColorCodes": [
+        null,
+        null,
+        "3",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "waveDromChars": [
+        "x",
+        null,
+        "3",
+        null,
+        ".",
+        null,
+        "x",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null
+      ],
+      "waveDromHadData": true,
+      "waveDromData": "D1",
+      "waveDromWaveLength": 8,
+      "subSteps": 1,
+      "groupName": "Master",
+      "groupColor": "#6496C8",
+      "groupPath": [
+        "Master"
+      ]
+    },
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "riseTime": 0,
+      "fallTime": 0,
+      "edgeArrow": "none",
+      "values": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "labels": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "name": "ack",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.2,
+      "fallTime": 0.2,
+      "edgeArrow": "none",
+      "values": [
+        -1,
+        -1,
+        0,
+        0,
+        1,
+        1,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        -1,
+        -1
+      ],
+      "labels": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "segmentStyles": [
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {},
+        {},
+        {},
+        {},
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        }
+      ],
+      "waveDromChars": [
+        "x",
+        null,
+        "0",
+        null,
+        "1",
+        null,
+        "x",
+        null,
+        "0",
+        null,
+        ".",
+        null,
+        "1",
+        null,
+        "x",
+        null
+      ],
+      "waveDromWaveLength": 8,
+      "subSteps": 1,
+      "groupName": "Slave/ctrl",
+      "groupColor": "#6496C8",
+      "groupPath": [
+        "Slave",
+        "ctrl"
+      ]
+    },
+    {
+      "name": "rdata",
+      "type": "vector",
+      "color": "#000000",
+      "riseTime": 0,
+      "fallTime": 0,
+      "edgeArrow": "none",
+      "values": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        0,
+        0,
+        -1,
+        -1
+      ],
+      "labels": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "Q2",
+        "Q2",
+        "",
+        ""
+      ],
+      "segmentStyles": [
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "fill": "#ffe0b9"
+        },
+        {
+          "fill": "#ffe0b9"
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        }
+      ],
+      "waveDromColorCodes": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "4",
+        null,
+        null,
+        null
+      ],
+      "waveDromChars": [
+        "x",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        "4",
+        null,
+        "x",
+        null
+      ],
+      "waveDromHadData": true,
+      "waveDromData": "Q2",
+      "waveDromWaveLength": 8,
+      "subSteps": 1,
+      "groupName": "Slave",
+      "groupColor": "#6496C8",
+      "groupPath": [
+        "Slave"
+      ]
+    }
+  ],
+  "markers": [],
+  "timeJumps": [],
+  "timeSpanMarkers": [],
+  "arrows": [],
+  "textAnnotations": []
+}

@@ -1,0 +1,7 @@
+{
+  "signal": [
+    { "name": "clk",  "wave": "P......" },
+    { "name": "data", "wave": "x23456x", "data": ["A", "B", "C", "D", "E"] },
+    { "name": "alt",  "wave": "x=2=3=x", "data": ["X", "Y", "Z", "W", "V"] }
+  ]
+}

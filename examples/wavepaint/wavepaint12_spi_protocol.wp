@@ -1,0 +1,597 @@
+{
+  "sampleCount": 12,
+  "subStepCount": 0,
+  "arrowColor": "#ff0000",
+  "waveDromHead": {
+    "text": "I2C Start Condition"
+  },
+  "waveDromConfig": {
+    "hscale": 1
+  },
+  "signals": [
+    {
+      "name": "SCLK",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0,
+      "fallTime": 0,
+      "edgeArrow": "none",
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "labels": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "waveDromChars": [
+        "0",
+        null,
+        ".",
+        null,
+        "p",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        "|",
+        null,
+        ".",
+        null,
+        ".",
+        null
+      ],
+      "waveDromWaveLength": 12,
+      "subSteps": 1
+    },
+    {
+      "name": "SS_n",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.2,
+      "fallTime": 0.2,
+      "edgeArrow": "none",
+      "values": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "labels": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "waveDromChars": [
+        "1",
+        null,
+        "0",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        ".",
+        null,
+        "|",
+        null,
+        ".",
+        null,
+        "1",
+        null
+      ],
+      "waveDromWaveLength": 12,
+      "subSteps": 1
+    },
+    {
+      "name": "MOSI",
+      "type": "vector",
+      "color": "#000000",
+      "riseTime": 0,
+      "fallTime": 0,
+      "edgeArrow": "none",
+      "values": [
+        -1,
+        -1,
+        -1,
+        -1,
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4,
+        4,
+        5,
+        5,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "labels": [
+        "",
+        "",
+        "",
+        "",
+        "B7",
+        "B7",
+        "B6",
+        "B6",
+        "B5",
+        "B5",
+        "B4",
+        "B4",
+        "B3",
+        "B3",
+        "B2",
+        "B2",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "segmentStyles": [
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "fill": "#ffffb4"
+        },
+        {
+          "fill": "#ffffb4"
+        },
+        {
+          "fill": "#ffe0b9"
+        },
+        {
+          "fill": "#ffe0b9"
+        },
+        {
+          "fill": "#b9e0ff"
+        },
+        {
+          "fill": "#b9e0ff"
+        },
+        {
+          "fill": "#ccfdfe"
+        },
+        {
+          "fill": "#ccfdfe"
+        },
+        {
+          "fill": "#cdfdc5"
+        },
+        {
+          "fill": "#cdfdc5"
+        },
+        {
+          "fill": "#f0c1fb"
+        },
+        {
+          "fill": "#f0c1fb"
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        }
+      ],
+      "waveDromColorCodes": [
+        null,
+        null,
+        null,
+        null,
+        "3",
+        null,
+        "4",
+        null,
+        "5",
+        null,
+        "6",
+        null,
+        "7",
+        null,
+        "8",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "waveDromChars": [
+        "x",
+        null,
+        ".",
+        null,
+        "3",
+        null,
+        "4",
+        null,
+        "5",
+        null,
+        "6",
+        null,
+        "7",
+        null,
+        "8",
+        null,
+        "x",
+        null,
+        "|",
+        null,
+        ".",
+        null,
+        "x",
+        null
+      ],
+      "waveDromHadData": true,
+      "waveDromData": [
+        "B7",
+        "B6",
+        "B5",
+        "B4",
+        "B3",
+        "B2",
+        "B1",
+        "B0"
+      ],
+      "waveDromWaveLength": 12,
+      "subSteps": 1
+    },
+    {
+      "name": "MISO",
+      "type": "vector",
+      "color": "#000000",
+      "riseTime": 0,
+      "fallTime": 0,
+      "edgeArrow": "none",
+      "values": [
+        -1,
+        -1,
+        -1,
+        -1,
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4,
+        4,
+        5,
+        5,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "labels": [
+        "",
+        "",
+        "",
+        "",
+        "D7",
+        "D7",
+        "D6",
+        "D6",
+        "D5",
+        "D5",
+        "D4",
+        "D4",
+        "D3",
+        "D3",
+        "D2",
+        "D2",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "segmentStyles": [
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "fill": "#ffffff"
+        },
+        {
+          "fill": "#ffffff"
+        },
+        {
+          "fill": "#ffffff"
+        },
+        {
+          "fill": "#ffffff"
+        },
+        {
+          "fill": "#ffffff"
+        },
+        {
+          "fill": "#ffffff"
+        },
+        {
+          "fill": "#ffffb4"
+        },
+        {
+          "fill": "#ffffb4"
+        },
+        {
+          "fill": "#ffffff"
+        },
+        {
+          "fill": "#ffffff"
+        },
+        {
+          "fill": "#ffe0b9"
+        },
+        {
+          "fill": "#ffe0b9"
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        },
+        {
+          "hatched": true
+        }
+      ],
+      "waveDromColorCodes": [
+        null,
+        null,
+        null,
+        null,
+        "=",
+        null,
+        "2",
+        null,
+        "=",
+        null,
+        "3",
+        null,
+        "=",
+        null,
+        "4",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "waveDromChars": [
+        "x",
+        null,
+        ".",
+        null,
+        "=",
+        null,
+        "2",
+        null,
+        "=",
+        null,
+        "3",
+        null,
+        "=",
+        null,
+        "4",
+        null,
+        "x",
+        null,
+        "|",
+        null,
+        ".",
+        null,
+        "x",
+        null
+      ],
+      "waveDromHadData": true,
+      "waveDromData": [
+        "D7",
+        "D6",
+        "D5",
+        "D4",
+        "D3",
+        "D2",
+        "D1",
+        "D0"
+      ],
+      "waveDromWaveLength": 12,
+      "subSteps": 1
+    }
+  ],
+  "markers": [],
+  "timeJumps": [
+    {
+      "id": 1,
+      "position": 9
+    }
+  ],
+  "timeSpanMarkers": [],
+  "arrows": [],
+  "textAnnotations": []
+}
