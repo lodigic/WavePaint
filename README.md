@@ -1,6 +1,10 @@
-# WavePaint
+# 🌊 WavePaint
 
-WavePaint is a browser application for drawing digital timing diagrams and waveforms. This repository contains the application source code, examples and tests under the MIT license.
+WavePaint is a browser editor for digital timing diagrams and waveforms. Draw signals, buses, clocks, groups, arrows, markers and annotations, then keep the diagram as a local file.
+
+**[🌐 Open the editor](https://www.wavepaint.net/)** · **[☕ Support on Ko-fi](https://ko-fi.com/wavepaint)**
+
+This repository contains the application source, examples and tests under the MIT license.
 
 ## Run locally
 
@@ -10,28 +14,27 @@ From the repository root, start a local server with Python 3:
 python3 -m http.server 3000 --bind 127.0.0.1 --directory app
 ```
 
-Open http://localhost:3000 for the waveform editor.
-
-The application is served directly from `app/`; no npm dependencies or build step are required.
+Open http://localhost:3000. The app is served from `app/`. There is no npm install and no build step.
 
 ## Features
 
 - **Waveforms:** digital signals, buses, clocks, groups, arrows, markers, annotations, undo/redo and built-in protocol examples.
-- **Import and export:** WavePaint documents, WaveDrom JSON, VCD, TXT/CSV and PNG, JPG or SVG images. Share links encode the diagram in the URL.
+- **Import and export:** WavePaint documents, WaveDrom JSON, VCD, TXT/CSV, and PNG, JPG or SVG images.
+- **Share links:** the diagram is encoded in the URL.
 
-The editor runs in your browser. Opening and saving diagrams uses local files. WaveDrom live preview loads version 3.1.0 from cdnjs, so that preview needs a network connection. Other editing features work without that CDN.
+Editing runs in the browser. Opening and saving uses local files. WaveDrom live preview loads version 3.1.0 from cdnjs, so that preview needs a network connection. The rest of the editor works without it.
 
-The **Donate** button links to [WavePaint on Ko-fi](https://ko-fi.com/wavepaint) for optional contributions.
+The **Donate** button in the editor opens [☕ WavePaint on Ko-fi](https://ko-fi.com/wavepaint).
 
 ## Tests
 
-With Node.js 22 or newer, run the suite from the repository root:
+With Node.js 22 or newer, from the repository root:
 
 ```sh
 node app/test/test.cjs
 ```
 
-Use `--core`, `--io` or `--ui` to run one group, and `--help` for all options. The suite uses the `.cjs` files in `app/test/` and requires no installed packages.
+`--core`, `--io` and `--ui` run one group. `--help` lists every option. The suite uses the `.cjs` files in `app/test/` and needs no installed packages.
 
 ## Source map
 
