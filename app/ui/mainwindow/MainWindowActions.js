@@ -134,9 +134,6 @@ async function handleAction(action) {
                 runTutorial();
             }
             break;
-        case 'contact':
-            showContactPopup();
-            break;
         case 'clear-all-signals':
             if (typeof document_wave.clearAllWaveView === 'function') {
                 document_wave.clearAllWaveView();

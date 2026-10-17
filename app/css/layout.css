@@ -358,21 +358,6 @@
     background-color: var(--hover-bg);
 }
 
-.menu-link-icon {
-    padding: 5px 8px;
-}
-
-.github-icon {
-    width: 16px;
-    height: 16px;
-    fill: currentColor;
-    transition: transform 150ms ease;
-}
-
-.menu-link-icon:hover .github-icon {
-    transform: scale(1.1);
-}
-
 /* ============================================
    TOOLBAR
    ============================================ */

@@ -210,11 +210,6 @@ function showAboutPopup() {
                 </div>
             </div>
         </div>
-        <div class="wp-about-footer">
-            <a href="https://github.com/lodigic/WavePaint" target="_blank" rel="noopener noreferrer" class="wp-about-link">GitHub</a>
-            <a href="https://github.com/lodigic/WavePaint/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="wp-about-link">License</a>
-            <a href="https://github.com/lodigic/WavePaint/issues" target="_blank" rel="noopener noreferrer" class="wp-about-link">Issues</a>
-        </div>
     `;
     const close = () => {
         overlay.remove();
@@ -231,47 +226,6 @@ function showAboutPopup() {
     overlay.appendChild(popup);
     document.body.appendChild(overlay);
     popup.querySelector('.wp-about-close').focus();
-}
-
-/**
- * Points help requests and bug reports to the public project.
- */
-function showContactPopup() {
-    document.querySelector('.wp-contact-overlay')?.remove();
-    const overlay = document.createElement('div');
-    overlay.className = 'wp-contact-overlay';
-    const popup = document.createElement('div');
-    popup.className = 'wp-contact-popup';
-    popup.setAttribute('role', 'dialog');
-    popup.setAttribute('aria-modal', 'true');
-    popup.setAttribute('aria-label', 'Project Support');
-    popup.innerHTML = `
-        <button class="wp-contact-close" aria-label="Close">&times;</button>
-        <div class="wp-contact-header">Project Support</div>
-        <div class="wp-contact-content">
-            <p class="wp-contact-intro">Report a bug or suggest an improvement on GitHub.</p>
-            <p class="wp-contact-message">Include steps to reproduce the issue and your browser version.
-            Share only diagrams you are comfortable making public.</p>
-        </div>
-        <div class="wp-contact-footer">
-            <a href="https://github.com/lodigic/WavePaint/issues/new" target="_blank" rel="noopener noreferrer" class="wp-contact-btn wp-contact-btn-primary">Open an Issue</a>
-        </div>
-    `;
-    const close = () => {
-        overlay.remove();
-        document.removeEventListener('keydown', onKeyDown);
-    };
-    const onKeyDown = (event) => {
-        if (event.key === 'Escape') close();
-    };
-    popup.querySelector('.wp-contact-close').onclick = close;
-    overlay.onclick = (event) => {
-        if (event.target === overlay) close();
-    };
-    document.addEventListener('keydown', onKeyDown);
-    overlay.appendChild(popup);
-    document.body.appendChild(overlay);
-    popup.querySelector('.wp-contact-close').focus();
 }
 
 /**

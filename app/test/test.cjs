@@ -7,7 +7,7 @@
  *   - test/io/*.test.cjs     - I/O module tests
  *   - test/ui/*.test.cjs     - UI component tests
  * 
- * Run with: node test-modular.js
+ * Run with: node app/test/test.cjs
  * Options:
  *   -v, --verbose   Show all passing tests
  *   --core          Run only core tests
@@ -39,7 +39,7 @@ if (showHelp) {
     console.log(`
 ${colors.bright}WavePaint Modular Test Runner${colors.reset}
 
-Usage: node test-modular.js [options]
+Usage: node app/test/test.cjs [options]
 
 Options:
   -v, --verbose   Show all passing tests (not just failures)
@@ -49,11 +49,11 @@ Options:
   -h, --help      Show this help message
 
 Examples:
-  node test-modular.js              Run all modular tests
-  node test-modular.js --core       Run only core tests  
-  node test-modular.js --io         Run only I/O tests
-  node test-modular.js --ui         Run only UI tests
-  node test-modular.js -v           Run all tests with verbose output
+  node app/test/test.cjs          Run all modular tests
+  node app/test/test.cjs --core   Run only core tests
+  node app/test/test.cjs --io     Run only I/O tests
+  node app/test/test.cjs --ui     Run only UI tests
+  node app/test/test.cjs -v       Run all tests with verbose output
 `);
     process.exit(0);
 }

@@ -4,14 +4,15 @@ WavePaint is a browser application for drawing digital timing diagrams and wavef
 
 ## Run locally
 
-Install Node.js 22 or newer, then run:
+From the repository root, start a local server with Python 3:
 
 ```sh
-npm ci
-npm run dev
+python3 -m http.server 3000 --bind 127.0.0.1 --directory app
 ```
 
 Open http://localhost:3000 for the waveform editor.
+
+The application is served directly from `app/`; no npm dependencies or build step are required.
 
 ## Features
 
@@ -22,15 +23,15 @@ The editor runs in your browser. Opening and saving diagrams uses local files. W
 
 The **Donate** button links to [WavePaint on Ko-fi](https://ko-fi.com/wavepaint) for optional contributions.
 
-## Build and test
+## Tests
+
+With Node.js 22 or newer, run the suite from the repository root:
 
 ```sh
-npm test
-npm run build
-npm run preview
+node app/test/test.cjs
 ```
 
-The build writes a static site to `dist/`. JavaScript remains readable, with no obfuscation, string encoding or name mangling. See [BUILD.md](BUILD.md) for build commands and browser checks.
+Use `--core`, `--io` or `--ui` to run one group, and `--help` for all options. The suite uses the `.cjs` files in `app/test/` and requires no installed packages.
 
 ## Source map
 
@@ -40,12 +41,13 @@ The build writes a static site to `dist/`. JavaScript remains readable, with no 
 | `app/io/` | File formats, share links and image export |
 | `app/js/`, `app/ui/`, `app/css/` | Waveform editor interface |
 | `app/examples/` | Example protocol diagrams |
-| `app/test/` | Waveform model and import/export tests |
-| `scripts/` | Local development and static builds |
+| `app/test/` | Waveform model, import/export and UI unit tests |
+| `app/test/io/wavedrom_samples/` | WaveDrom JSON examples used by round-trip tests; also available for manual import |
+| `examples/wavepaint/` | WavePaint documents for manual opening and import checks |
 
 ## Contributing
 
-Report bugs and propose changes through [GitHub issues](https://github.com/lodigic/WavePaint/issues) and pull requests. Include a small example diagram or reproduction steps where useful. Run the relevant tests and update the affected guide when changing commands, file formats or editor behavior.
+Include a small example diagram or reproduction steps when reporting an issue. Run the relevant tests and update the affected guide when changing commands, file formats or editor behavior.
 
 ## License
 
