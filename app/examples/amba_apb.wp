@@ -1,0 +1,153 @@
+{
+  "sampleCount": 28,
+  "subStepCount": 0,
+  "arrowColor": "#ef4444",
+  "signals": [
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "PCLK",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.05,
+      "fallTime": 0.05,
+      "edgeArrow": "positive",
+      "values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "PSEL",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "APB Ctrl",
+      "groupColor": "#a855f7"
+    },
+    {
+      "name": "PENABLE",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "APB Ctrl",
+      "groupColor": "#a855f7"
+    },
+    {
+      "name": "PWRITE",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "APB Ctrl",
+      "groupColor": "#a855f7"
+    },
+    {
+      "name": "PREADY",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "APB Ctrl",
+      "groupColor": "#a855f7"
+    },
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "PADDR",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#e5e5e5",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [-2, -2, 0, 0, 0, 0, -2, -2, -2, -2, -2, -2, -2, -2, 1, 1, 1, 1, 1, 1, 1, 1, -2, -2, -2, -2, -2, -2],
+      "labels": ["", "", "0x04", "", "", "", "", "", "", "", "", "", "", "", "0x08", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "APB Data",
+      "groupColor": "#f59e0b"
+    },
+    {
+      "name": "PWDATA",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#e5e5e5",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [-2, -2, 0, 0, 0, 0, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2],
+      "labels": ["", "", "0xABCD", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "APB Data",
+      "groupColor": "#f59e0b"
+    },
+    {
+      "name": "PRDATA",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#e5e5e5",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [-2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, 0, 0, 0, 0, -2, -2, -2, -2, -2, -2],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "0x1234", "", "", "", "", "", "", "", "", ""],
+      "groupName": "APB Data",
+      "groupColor": "#f59e0b"
+    },
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "PHASE",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#f5f5f5",
+      "riseTime": 0,
+      "fallTime": 0,
+      "values": [0, 0, 1, 1, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0],
+      "labels": ["IDLE", "", "SETUP", "", "ACCESS", "", "IDLE", "", "", "", "", "", "", "", "SETUP", "", "WAIT", "", "WAIT", "", "ACCESS", "", "IDLE", "", "", "", "", ""]
+    }
+  ],
+  "markers": [
+    {"id": 1, "sample": 5, "color": "#22c55e"},
+    {"id": 2, "sample": 21, "color": "#3b82f6"}
+  ],
+  "timeJumps": [],
+  "timeSpanMarkers": [
+    {"id": 1, "startSignal": 10, "startSample": 2, "endSignal": 10, "endSample": 6, "style": "-|-", "color": "#22c55e", "label": "WRITE (no wait)"},
+    {"id": 2, "startSignal": 10, "startSample": 14, "endSignal": 10, "endSample": 22, "style": "-|-", "color": "#3b82f6", "label": "READ (+2 wait states)"}
+  ],
+  "arrows": [
+    {"id": 1, "startSignal": 3, "startSample": 5, "endSignal": 11, "endSample": 6, "style": "-|>", "color": "#22c55e"},
+    {"id": 2, "startSignal": 5, "startSample": 19, "endSignal": 9, "endSample": 20, "style": "~>", "color": "#ef4444"},
+    {"id": 3, "startSignal": 3, "startSample": 21, "endSignal": 11, "endSample": 22, "style": "-|>", "color": "#3b82f6"}
+  ],
+  "groups": [],
+  "textAnnotations": [
+    {"id": 1, "anchorType": 0, "anchorId": -1, "sample": 0, "vPos": 0, "text": "APB3 Protocol (AMBA 3)", "fontSize": 11, "bold": true, "color": "#000000"},
+    {"id": 2, "anchorType": 1, "anchorId": 2, "sample": 2, "vPos": -1, "text": "SETUP", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 3, "anchorType": 1, "anchorId": 3, "sample": 4, "vPos": -1, "text": "ACCESS", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 4, "anchorType": 1, "anchorId": 5, "sample": 14, "vPos": -1, "text": "PREADY=0", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 5, "anchorType": 1, "anchorId": 5, "sample": 18, "vPos": -1, "text": "PREADY=1", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 6, "anchorType": 0, "anchorId": -1, "sample": 0, "vPos": 12, "text": "SETUP: PSEL=1, PENABLE=0 | ACCESS: PSEL=1, PENABLE=1, wait for PREADY", "fontSize": 9, "bold": false, "color": "#000000"},
+    {"id": 7, "anchorType": 1, "anchorId": 4, "sample": 2, "vPos": 1, "text": "PWRITE=1 (Write)", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 8, "anchorType": 1, "anchorId": 4, "sample": 14, "vPos": 1, "text": "PWRITE=0 (Read)", "fontSize": 8, "bold": false, "color": "#000000"}
+  ]
+}

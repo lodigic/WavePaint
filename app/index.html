@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>WavePaint</title>
+    <link rel="icon" href="favicon.ico?v=2" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/vcd-panel.css">
+    <!-- WaveDrom Library for live preview - must load early -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.1.0/skins/default.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.1.0/wavedrom.min.js"></script>
+    <style>
+        #app-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #2b2b2b;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        #app-loader img {
+            width: 400px;
+            height: auto;
+            margin-bottom: 30px;
+        }
+        #app-loader .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(76, 175, 80, 0.2);
+            border-top: 4px solid #4CAF50;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        body.loading #app-loader {
+            display: flex;
+        }
+        body:not(.loading) #app-loader {
+            display: none;
+        }
+    </style>
+    <script>
+        (function () {
+            function removeLoader() {
+                document.body.classList.remove('loading');
+                var loader = document.getElementById('app-loader');
+                if (loader && loader.parentElement) {
+                    loader.parentElement.removeChild(loader);
+                }
+            }
+
+            window.addEventListener('load', function () {
+                removeLoader();
+            }, { once: true });
+
+            setTimeout(removeLoader, 5000);
+        })();
+    </script>
+</head>
+<body class="loading">
+    <div id="app-loader">
+        <img src="img/WavePaint_header.png" alt="WavePaint">
+        <div class="spinner"></div>
+    </div>
+    <div id="menu-bar">
+        <img id="logo" src="img/logo.webp" alt="WavePaint">
+        <ul>
+            <li class="menu-item">File
+                <ul class="submenu">
+                    <li>New</li>
+                    <li>Open</li>
+                    <li>Load Example</li>
+                    <li>Save As</li>
+                    <li>Copy Share Link</li>
+                    <li class="submenu-separator"></li>
+                    <li class="has-submenu">Import As
+                        <ul class="submenu submenu-right">
+                            <li data-action="import-wavedrom">WaveDrom JSON...</li>
+                            <li data-action="import-vcd">VCD (Value Change Dump)...</li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">Export As
+                        <ul class="submenu submenu-right">
+                            <li class="has-submenu">Image
+                                <ul class="submenu submenu-right">
+                                    <li data-action="export-png">PNG</li>
+                                    <li data-action="export-svg">SVG</li>
+                                    <li data-action="export-jpg">JPG</li>
+                                </ul>
+                            </li>
+                            <li class="submenu-separator"></li>
+                            <li data-action="export-wavedrom">WaveDrom JSON...</li>
+                            <li data-action="export-vcd">VCD (Value Change Dump)...</li>
+                            <li class="submenu-separator"></li>
+                            <li data-action="export-txt">TXT (Tab-separated)...</li>
+                            <li data-action="export-csv">CSV (Spreadsheet)...</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item">Edit
+                <ul class="submenu">
+                    <li data-action="clear-all-signals">Clear all signals</li>
+                </ul>
+            </li>
+            <li class="menu-item">View
+                <ul class="submenu">
+                    <li data-action="theme">Theme</li>
+                    <li data-action="time-axis">Time Axis</li>
+                    <li data-action="toggle-axis-visibility">Hide Axis Numbers</li>
+                    <li class="submenu-separator"></li>
+                    <li class="has-submenu">WaveDrom
+                        <ul class="submenu submenu-right">
+                            <li data-action="show-wavedrom-code">Show Code</li>
+                            <li data-action="wavedrom-debug">Debug Panel</li>
+                        </ul>
+                    </li>
+                    <li data-action="toggle-vcd-panel">VCD Signals Panel</li>
+                </ul>
+            </li>
+            <li class="menu-item">Help
+                <ul class="submenu">
+                    <li data-action="tutorial">Tutorial</li>
+                    <li data-action="contact">Project Support</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="privacy-shield" id="privacy-shield" tabindex="0">
+            <svg class="shield-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L3 7V12C3 17.55 6.84 22.74 12 24C17.16 22.74 21 17.55 21 12V7L12 2Z" fill="#4CAF50" stroke="#388E3C" stroke-width="1"/>
+                <path d="M9 12L11 14L15 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="privacy-tooltip">
+                <div class="privacy-tooltip-header">
+                    <svg class="tooltip-shield" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L3 7V12C3 17.55 6.84 22.74 12 24C17.16 22.74 21 17.55 21 12V7L12 2Z" fill="#4CAF50"/>
+                        <path d="M9 12L11 14L15 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Your Data is Protected</span>
+                </div>
+                <p class="privacy-tooltip-text">Your waveform projects are processed <strong>locally in your browser</strong>. Diagrams are saved to files or browser storage. WaveDrom preview loads its library from a public CDN.</p>
+                <div class="privacy-tooltip-verify">
+                    <span class="verify-icon">🔍</span>
+                    <span>Your diagram data is not uploaded by the editor.</span>
+                </div>
+            </div>
+        </div>
+        <div class="menu-spacer"></div>
+        <nav class="menu-right-links">
+            <a href="#" class="menu-link" id="about-link" onclick="showAboutPopup(); return false;">About</a>
+            <a href="https://github.com/lodigic/WavePaint/issues/new" target="_blank" rel="noopener noreferrer" class="menu-link">Report Bug</a>
+            <a href="https://github.com/lodigic/WavePaint" target="_blank" rel="noopener noreferrer" class="menu-link menu-link-icon" title="GitHub">
+                <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
+        </nav>
+    </div>
+    <div id="toolbar">
+        <button type="button" class="tool-btn" id="tool-open" title="Open"><img src="img/folder.svg" alt="Open"></button>
+        <button type="button" class="tool-btn" id="tool-save" title="Save"><img src="img/save.svg" alt="Save"></button>
+        <span class="separator">|</span>
+        <button type="button" class="tool-btn" id="tool-undo" title="Undo"><img src="img/undo.svg" alt="Undo"></button>
+        <button type="button" class="tool-btn" id="tool-redo" title="Redo"><img src="img/redo.svg" alt="Redo"></button>
+        <span class="separator">|</span>
+        <button type="button" class="tool-btn" id="tool-zoom-out" title="Zoom Out"><img src="img/zoom_out.svg" alt="Zoom Out"></button>
+        <button type="button" class="tool-btn" id="tool-zoom-in" title="Zoom In"><img src="img/zoom_in.svg" alt="Zoom In"></button>
+        <button type="button" class="tool-btn" id="tool-zoom-fit" title="Zoom Fit"><img src="img/zoom_fit.svg" alt="Zoom Fit"></button>
+        <span class="separator">|</span>
+        <div class="dropdown">
+            <button type="button" class="tool-btn" id="add-signal-btn" title="Add Signal"><img src="img/add_signal.svg" alt="Add Signal"></button>
+            <div class="dropdown-content">
+                <a href="#" data-action="bit-signal">Bit Signal</a>
+                <a href="#" data-action="vector-signal">Vector Signal</a>
+                <div class="separator"></div>
+                <div class="submenu">
+                    <a href="#">Predefined Signals ▶</a>
+                    <div class="submenu-content">
+                        <a href="#" data-action="clock">Clock</a>
+                        <a href="#" data-action="counter">Counter</a>
+                        <a href="#" data-action="reset">Reset</a>
+                        <a href="#" data-action="pulse">Pulse</a>
+                        <a href="#" data-action="strobe">Strobe/Enable</a>
+                        <a href="#" data-action="pwm">PWM</a>
+                        <a href="#" data-action="ramp">Ramp</a>
+                        <a href="#" data-action="walking-one">Walking One</a>
+                        <a href="#" data-action="walking-zero">Walking Zero</a>
+                        <a href="#" data-action="bus-idle">Bus Idle</a>
+                        <a href="#" data-action="alternating">Alternating</a>
+                        <a href="#" data-action="gray-code">Gray Code Counter</a>
+                    </div>
+                </div>
+                <div class="separator"></div>
+                <a href="#" data-action="blank-row">Blank Row</a>
+            </div>
+        </div>
+        <span class="separator">|</span>
+        <button type="button" class="tool-btn" id="tool-cut" title="Cut (C)" data-tool="cut"><img src="img/cut.svg" alt="Cut"></button>
+        <button type="button" class="tool-btn paint-color" id="tool-paint-color" title="Paint Color"><div class="color-box"></div></button>
+        <!-- Bit State Picker - Photoshop-style brush selector -->
+        <div class="dropdown bit-state-picker" id="bit-state-picker">
+            <button type="button" class="tool-btn bit-state-btn" id="tool-bit-state" title="Bit State (click to change)">
+                <div class="bit-state-preview" id="bit-state-preview">
+                    <svg width="16" height="16" viewBox="0 0 16 16" id="bit-state-icon">
+                        <line x1="2" y1="4" x2="14" y2="4" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <span class="bit-state-arrow">▼</span>
+            </button>
+            <div class="dropdown-content bit-state-menu" id="bit-state-menu">
+                <a href="#" data-state="1" class="bit-state-option">
+                    <span class="bit-state-icon">
+                        <svg width="20" height="16" viewBox="0 0 20 16"><line x1="2" y1="4" x2="18" y2="4" stroke="#4CAF50" stroke-width="2.5"/></svg>
+                    </span>
+                    <span class="bit-state-label">High (1)</span>
+                    <span class="bit-state-key">1</span>
+                </a>
+                <a href="#" data-state="0" class="bit-state-option">
+                    <span class="bit-state-icon">
+                        <svg width="20" height="16" viewBox="0 0 20 16"><line x1="2" y1="12" x2="18" y2="12" stroke="#4CAF50" stroke-width="2.5"/></svg>
+                    </span>
+                    <span class="bit-state-label">Low (0)</span>
+                    <span class="bit-state-key">0</span>
+                </a>
+                <div class="separator"></div>
+                <a href="#" data-state="z" class="bit-state-option">
+                    <span class="bit-state-icon">
+                        <svg width="20" height="16" viewBox="0 0 20 16"><line x1="2" y1="8" x2="18" y2="8" stroke="#2196F3" stroke-width="2" stroke-dasharray="3,2"/></svg>
+                    </span>
+                    <span class="bit-state-label">High-Z (z)</span>
+                    <span class="bit-state-key">Z</span>
+                </a>
+                <a href="#" data-state="x" class="bit-state-option">
+                    <span class="bit-state-icon">
+                        <svg width="20" height="16" viewBox="0 0 20 16">
+                            <rect x="2" y="3" width="16" height="10" fill="url(#crosshatch)" stroke="#F44336" stroke-width="1"/>
+                            <defs><pattern id="crosshatch" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0,0 l4,4 M4,0 l-4,4" stroke="#F44336" stroke-width="0.5"/></pattern></defs>
+                        </svg>
+                    </span>
+                    <span class="bit-state-label">Undefined (x)</span>
+                    <span class="bit-state-key">X</span>
+                </a>
+                <div class="separator"></div>
+                <a href="#" data-state="u" class="bit-state-option">
+                    <span class="bit-state-icon">
+                        <svg width="20" height="16" viewBox="0 0 20 16"><line x1="2" y1="4" x2="18" y2="4" stroke="#9C27B0" stroke-width="1.5" stroke-dasharray="1,1"/></svg>
+                    </span>
+                    <span class="bit-state-label">Pull-up (u)</span>
+                    <span class="bit-state-key">U</span>
+                </a>
+                <a href="#" data-state="d" class="bit-state-option">
+                    <span class="bit-state-icon">
+                        <svg width="20" height="16" viewBox="0 0 20 16"><line x1="2" y1="12" x2="18" y2="12" stroke="#9C27B0" stroke-width="1.5" stroke-dasharray="1,1"/></svg>
+                    </span>
+                    <span class="bit-state-label">Pull-down (d)</span>
+                    <span class="bit-state-key">D</span>
+                </a>
+            </div>
+        </div>
+        <button type="button" class="tool-btn" id="tool-paint" title="Paint (P)" data-tool="paint"><img src="img/paint.svg" alt="Paint"></button>
+        <button type="button" class="tool-btn" id="tool-erase" title="Erase (E)" data-tool="erase"><img src="img/erase.svg" alt="Erase"></button>
+        <button type="button" class="tool-btn" id="tool-select" title="Selection (S)" data-tool="select"><img src="img/selection.svg" alt="Selection"></button>
+        <span class="separator">|</span>
+        <button type="button" class="tool-btn" id="tool-arrow" title="Arrow (A)" data-tool="arrow"><img src="img/arrow.svg" alt="Arrow"></button>
+        <button type="button" class="tool-btn" id="tool-time-span" title="Time Span (R)" data-tool="time-span"><img src="img/time_span.svg" alt="Time Span"></button>
+        <span class="separator">|</span>
+        <button type="button" class="tool-btn" id="tool-marker" title="Marker (M)" data-tool="marker"><img src="img/marker.svg" alt="Marker"></button>
+        <button type="button" class="tool-btn" id="tool-time-jump" title="Time Jump (J)" data-tool="time-jump"><img src="img/time_jump.svg" alt="Time Jump"></button>
+        <span class="separator">|</span>
+        <button type="button" class="tool-btn" id="tool-text" title="Text Annotation (T)" data-tool="text"><img src="img/text_annotation.svg" alt="Text Annotation"></button>
+        <span class="separator">|</span>
+        <button type="button" class="tool-btn" id="tool-select-object" title="Select Object (V)" data-tool="select-object"><img src="img/cursor.svg" alt="Select Object"></button>
+        <button type="button" class="tool-btn disabled" id="tool-properties" title="Properties (select an object first)" disabled><img src="img/properties.svg" alt="Properties"></button>
+        <span class="separator">|</span>
+        <div class="step-controls">
+            <div class="step-control-group">
+                <label for="sample-spin" class="step-label">Steps:</label>
+                <div class="step-input-wrapper">
+                    <input type="number" id="sample-spin" min="4" max="1000000" value="20" class="step-input" title="Number of time steps">
+                </div>
+            </div>
+            <div class="step-control-group">
+                <label for="substep-spin" class="step-label">Sub-Steps:</label>
+                <div class="step-input-wrapper">
+                    <input type="number" id="substep-spin" min="0" max="16" value="0" class="step-input" title="Subdivisions per time step">
+                </div>
+            </div>
+        </div>
+        <div class="donate-wrapper">
+            <a href="https://ko-fi.com/wavepaint" target="_blank" rel="noopener noreferrer" class="donate-btn" id="donate-btn">
+                <svg class="donate-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
+                </svg>
+                <span>Donate</span>
+            </a>
+            <div class="donate-tooltip">
+                <p class="donate-tooltip-text">WavePaint is free! If you find it useful, consider buying me a ☕ coffee!</p>
+            </div>
+        </div>
+        <div class="spacer"></div>
+        <input type="color" id="signal-color" title="Signal Color" style="display: none;">
+
+    </div>
+    <div id="main-area">
+        <div id="wave-view">
+            <canvas id="wave-canvas" width="800" height="600"></canvas>
+        </div>
+    </div>
+    <!-- WaveDrom Debug Panel -->
+    <div id="wavedrom-debug-panel" class="wavedrom-debug-panel hidden">
+        <div class="wavedrom-debug-header">
+            <span class="wavedrom-debug-title">WaveDrom Code (Live Editor)</span>
+            <div class="wavedrom-debug-status">
+                <span id="wavedrom-debug-status" class="status-ok">✓ Valid</span>
+            </div>
+            <div class="wavedrom-debug-actions">
+                <button id="wavedrom-debug-copy" class="wavedrom-debug-btn" title="Copy to Clipboard">📋 Copy</button>
+                <button id="wavedrom-debug-open" class="wavedrom-debug-btn" title="Open in WaveDrom Editor">🔗 Open in Editor</button>
+                <button id="wavedrom-debug-close" class="wavedrom-debug-btn" title="Close Panel">✕</button>
+            </div>
+        </div>
+        <div class="wavedrom-debug-content">
+            <div class="wavedrom-code-editor">
+                <div class="code-editor-lines" id="wavedrom-line-numbers"></div>
+                <div class="code-editor-wrapper">
+                    <pre class="code-editor-highlight" id="wavedrom-highlight" aria-hidden="true"><code></code></pre>
+                    <textarea id="wavedrom-debug-code" class="code-editor-textarea" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off">{ signal: [] }</textarea>
+                </div>
+            </div>
+            <div class="wavedrom-splitter" id="wavedrom-splitter"></div>
+            <div class="wavedrom-preview-container">
+                <div class="wavedrom-preview-header">
+                    <span class="wavedrom-preview-title">Live Preview</span>
+                </div>
+                <div id="wavedrom-preview-content" class="wavedrom-preview-content">
+                    <div id="wavedrom-render-target"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="wp-modal-overlay" class="wp-modal-overlay hidden">
+        <div id="wp-modal" class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="wp-modal-title">
+            <div id="wp-modal-header" class="wp-modal-header">
+                <span id="wp-modal-title" class="wp-modal-title">Dialog</span>
+                <button id="wp-modal-close" class="wp-modal-close" aria-label="Close">✕</button>
+            </div>
+            <div class="wp-modal-body">
+                <div id="wp-modal-message" class="wp-modal-message"></div>
+                <input id="wp-modal-input" class="wp-modal-input" type="text" autocomplete="off" />
+            </div>
+            <div class="wp-modal-footer">
+                <button id="wp-modal-cancel" class="wp-modal-btn">Cancel</button>
+                <button id="wp-modal-ok" class="wp-modal-btn primary">OK</button>
+            </div>
+        </div>
+    </div>
+    <script src="core/core.js"></script>
+    <script src="core/Arrows.js"></script>
+    <script src="core/Markers.js"></script>
+    <script src="core/TimeSpanMarkers.js"></script>
+    <script src="core/TextAnnotations.js"></script>
+    <script src="core/Signals.js"></script>
+    <script src="core/Selection.js"></script>
+    <script src="core/Cut.js"></script>
+    <script src="core/Groups.js"></script>
+    <script src="core/SignalTypes.js"></script>
+    <script src="core/UndoRedo.js"></script>
+    <script src="io/JsonIO.js"></script>
+    <script src="io/ShareLink.js"></script>
+    <!-- WaveDrom I/O Modules (loaded in order) -->
+    <script src="io/wavedrom/WaveDromConstants.js"></script>
+    <script src="io/wavedrom/WaveDromUtils.js"></script>
+    <script src="io/wavedrom/WaveDromImport.js"></script>
+    <script src="io/wavedrom/WaveDromExport.js"></script>
+    <script src="io/wavedrom/WaveDromUI.js"></script>
+    <script src="io/wavedrom/WaveDromIO.js"></script>
+    <script src="io/VcdIO.js"></script>
+    <script src="io/TxtCsvIO.js"></script>
+    <script src="ui/Skins.js"></script>
+    <script src="ui/ThemeDialog.js"></script>
+    <script src="ui/VcdHierarchy.js"></script>
+    <!-- MainWindow modular files (split from MainWindow.js) -->
+    <script src="ui/mainwindow/MainWindowHelpers.js"></script>
+    <script src="ui/mainwindow/MainWindowDialogs.js"></script>
+    <script src="ui/mainwindow/MainWindowExport.js"></script>
+    <script src="ui/mainwindow/MainWindowVcd.js"></script>
+    <script src="ui/mainwindow/MainWindowWaveDrom.js"></script>
+    <script src="ui/mainwindow/MainWindowActions.js"></script>
+    <!-- WaveView modular files (split from WaveView.js) - ordered by dependencies -->
+    <!-- Level 0: No WaveView dependencies -->
+    <script src="ui/waveview/WaveViewConstants.js"></script>
+    <script src="ui/waveview/WaveViewState.js"></script>
+    <script src="ui/waveview/WaveViewDialogs.js"></script>
+    <!-- Level 1: Depends on Constants only -->
+    <script src="ui/waveview/WaveViewTheme.js"></script>
+    <script src="ui/waveview/WaveViewUtils.js"></script>
+    <script src="ui/waveview/WaveViewGrid.js"></script>
+    <!-- Level 2: Depends on Constants + Theme -->
+    <script src="ui/waveview/WaveViewSignals.js"></script>
+    <!-- Level 3: Depends on Constants + State -->
+    <script src="ui/waveview/WaveViewZoom.js"></script>
+    <script src="ui/waveview/WaveViewSelection.js"></script>
+    <!-- Level 4: Depends on Utils (cubicPoint, etc.) -->
+    <script src="ui/waveview/WaveViewArrows.js"></script>
+    <!-- Level 5: Depends on Arrows + Utils -->
+    <script src="ui/waveview/WaveViewTextExclusion.js"></script>
+    <script src="ui/waveview/WaveViewTextAnnotations.js"></script>
+    <script src="ui/waveview/WaveViewHitTest.js"></script>
+    <!-- Level 6: Depends on State + Theme -->
+    <script src="ui/waveview/WaveViewMarkers.js"></script>
+    <script src="ui/waveview/WaveViewOverlays.js"></script>
+    <!-- Level 7: Depends on nearly everything -->
+    <script src="ui/waveview/WaveViewMouse.js"></script>
+    <!-- Level 8: Main orchestrator - must be last -->
+    <script src="ui/waveview/WaveViewMain.js"></script>
+    <!-- Modular JS files (reorganized from main.js) -->
+    <script src="js/GlobalState.js"></script>
+    <script src="js/ColorPicker.js"></script>
+    <script src="js/BitStatePicker.js"></script>
+    <script src="js/Dialogs.js"></script>
+    <!-- Context menu modular files (split from ContextMenus.js) -->
+    <script src="js/contextmenu/ArrowContextMenu.js"></script>
+    <script src="js/contextmenu/MarkerContextMenu.js"></script>
+    <script src="js/contextmenu/TimeJumpContextMenu.js"></script>
+    <script src="js/contextmenu/TimeSpanContextMenu.js"></script>
+    <script src="js/contextmenu/SegmentContextMenu.js"></script>
+    <script src="js/contextmenu/SignalGroupContextMenu.js"></script>
+    <script src="js/contextmenu/TextAnnotationContextMenu.js"></script>
+    <script src="js/Tutorial.js"></script>
+    <script src="js/ToolManager.js"></script>
+    <script src="js/PropertyEditor.js"></script>
+    <!-- Export modular files (split from ExportFunctions.js) -->
+    <script src="io/export/ExportCanvas.js"></script>
+    <script src="io/export/ExportPNG.js"></script>
+    <script src="io/export/ExportJPG.js"></script>
+    <script src="io/export/ExportSVG.js"></script>
+    <script src="io/ExampleLoader.js"></script>
+    <!-- AppInit modular files (split from AppInit.js) -->
+    <script src="js/appinit/AppInitMenus.js"></script>
+    <script src="js/appinit/AppInitToolbar.js"></script>
+    <script src="js/appinit/AppInitCanvas.js"></script>
+    <script src="js/appinit/AppInitKeyboard.js"></script>
+    <script src="js/appinit/AppContextMenus.js"></script>
+    <script src="js/appinit/AppSignalContextMenu.js"></script>
+    <script src="js/appinit/AppSignalDialogs.js"></script>
+    <script src="js/appinit/AppClipboard.js"></script>
+    <script src="js/appinit/AppInitCore.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+node_modules/
+dist/
+coverage/
+
+# Local configuration, credentials and editor state
+.env
+.env.*
+!.env.example
+.npmrc
+.aws/
+.agents/
+.codex/
+.idea/
+.vscode/
+*.log
+.DS_Store
+Thumbs.db

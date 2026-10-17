@@ -1,0 +1,163 @@
+{
+  "sampleCount": 36,
+  "subStepCount": 0,
+  "arrowColor": "#ef4444",
+  "signals": [
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "CLK",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.05,
+      "fallTime": 0.05,
+      "edgeArrow": "positive",
+      "values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "TX_ST",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "TX TLP",
+      "groupColor": "#22c55e"
+    },
+    {
+      "name": "TX_END",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "TX TLP",
+      "groupColor": "#22c55e"
+    },
+    {
+      "name": "TX_VALID",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "TX TLP",
+      "groupColor": "#22c55e"
+    },
+    {
+      "name": "TX_DATA",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#e5e5e5",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [-2, -2, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2],
+      "labels": ["", "", "H0", "", "H1", "", "H2", "", "H3", "", "ADDR", "", "LCRC", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "TX TLP",
+      "groupColor": "#22c55e"
+    },
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "RX_ST",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "RX TLP",
+      "groupColor": "#3b82f6"
+    },
+    {
+      "name": "RX_END",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "RX TLP",
+      "groupColor": "#3b82f6"
+    },
+    {
+      "name": "RX_VALID",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "RX TLP",
+      "groupColor": "#3b82f6"
+    },
+    {
+      "name": "RX_DATA",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#e5e5e5",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [-2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, -2, -2],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "H0", "", "H1", "", "H2", "", "D0", "", "D1", "", "D2", "", "LCRC", "", "", ""],
+      "groupName": "RX TLP",
+      "groupColor": "#3b82f6"
+    },
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "TLP_TYPE",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#f5f5f5",
+      "riseTime": 0,
+      "fallTime": 0,
+      "values": [-1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, -1],
+      "labels": ["", "", "MRd", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "CplD", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    }
+  ],
+  "markers": [
+    {"id": 1, "sample": 3, "color": "#22c55e"},
+    {"id": 2, "sample": 21, "color": "#3b82f6"}
+  ],
+  "timeJumps": [],
+  "timeSpanMarkers": [
+    {"id": 1, "startSignal": 6, "startSample": 2, "endSignal": 6, "endSample": 14, "style": "-|-", "color": "#22c55e", "label": "MRd TLP (4DW + LCRC)"},
+    {"id": 2, "startSignal": 6, "startSample": 14, "endSignal": 6, "endSample": 20, "style": "-|-", "color": "#f59e0b", "label": "Completion Latency"},
+    {"id": 3, "startSignal": 11, "startSample": 20, "endSignal": 11, "endSample": 34, "style": "-|-", "color": "#3b82f6", "label": "CplD TLP (3DW + Payload + LCRC)"}
+  ],
+  "arrows": [
+    {"id": 1, "startSignal": 5, "startSample": 13, "endSignal": 10, "endSample": 20, "style": "<->", "color": "#ef4444"}
+  ],
+  "groups": [],
+  "textAnnotations": [
+    {"id": 1, "anchorType": 0, "anchorId": -1, "sample": 0, "vPos": 0, "text": "PCIe Gen3 Memory Read", "fontSize": 11, "bold": true, "color": "#000000"},
+    {"id": 2, "anchorType": 1, "anchorId": 2, "sample": 2, "vPos": -1, "text": "SOP", "fontSize": 8, "bold": true, "color": "#000000"},
+    {"id": 3, "anchorType": 1, "anchorId": 3, "sample": 12, "vPos": -1, "text": "EOP", "fontSize": 8, "bold": true, "color": "#000000"},
+    {"id": 4, "anchorType": 1, "anchorId": 7, "sample": 20, "vPos": -1, "text": "SOP", "fontSize": 8, "bold": true, "color": "#000000"},
+    {"id": 5, "anchorType": 1, "anchorId": 8, "sample": 32, "vPos": -1, "text": "EOP", "fontSize": 8, "bold": true, "color": "#000000"},
+    {"id": 6, "anchorType": 0, "anchorId": -1, "sample": 0, "vPos": 13, "text": "MRd: Memory Read Request | CplD: Completion with Data", "fontSize": 9, "bold": false, "color": "#000000"},
+    {"id": 7, "anchorType": 1, "anchorId": 5, "sample": 2, "vPos": 1, "text": "Fmt=00, Type=00000", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 8, "anchorType": 1, "anchorId": 10, "sample": 20, "vPos": 1, "text": "Fmt=10, Type=01010", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 9, "anchorType": 1, "anchorId": 10, "sample": 26, "vPos": 1, "text": "Payload", "fontSize": 8, "bold": false, "color": "#000000"}
+  ]
+}

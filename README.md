@@ -1,48 +1,52 @@
 # WavePaint
 
-Digital Timing Diagram GUI Editor
-![Wavepaint](img/digital-timing-editor-online.webp)
-## About This Repository
+WavePaint is a browser application for drawing digital timing diagrams and waveforms. This repository contains the application source code, examples and tests under the MIT license.
 
-This is an **open source** repository for community-contributed materials, examples, and issue tracking related to [WavePaint](https://www.wavepaint.net/).
+## Run locally
 
-### Important Note
+Install Node.js 22 or newer, then run:
 
- **The web application code of WavePaint (https://www.wavepaint.net/) is not open source.** This repository is specifically for:
+```sh
+npm ci
+npm run dev
+```
 
-- 📚 Open source examples and tutorials
-- 🐛 Issue tracking and feature requests
-- 💡 Community contributions and discussions
-- 📖 Documentation and guides
+Open http://localhost:3000 for the waveform editor.
 
-The actual WavePaint web application remains proprietary software.
+## Features
 
-## What is WavePaint? 
+- **Waveforms:** digital signals, buses, clocks, groups, arrows, markers, annotations, undo/redo and built-in protocol examples.
+- **Import and export:** WavePaint documents, WaveDrom JSON, VCD, TXT/CSV and PNG, JPG or SVG images. Share links encode the diagram in the URL.
 
-WavePaint is a digital timing diagram GUI editor available at https://www.wavepaint.net/. It helps users create professional timing diagrams for digital circuits and systems.
+The editor runs in your browser. Opening and saving diagrams uses local files. WaveDrom live preview loads version 3.1.0 from cdnjs, so that preview needs a network connection. Other editing features work without that CDN.
 
-## Repository Structure
+The **Donate** button links to [WavePaint on Ko-fi](https://ko-fi.com/wavepaint) for optional contributions.
 
-This repository is organized to support the WavePaint community:
+## Build and test
 
-- `/examples` - Example timing diagrams and use cases (coming soon)
-- `/docs` - User guides and documentation (coming soon)
-- `/issues` - Track bugs and feature requests via GitHub Issues
+```sh
+npm test
+npm run build
+npm run preview
+```
+
+The build writes a static site to `dist/`. JavaScript remains readable, with no obfuscation, string encoding or name mangling. See [BUILD.md](BUILD.md) for build commands and browser checks.
+
+## Source map
+
+| Path | Contents |
+| --- | --- |
+| `app/core/` | Waveform document model and editing operations |
+| `app/io/` | File formats, share links and image export |
+| `app/js/`, `app/ui/`, `app/css/` | Waveform editor interface |
+| `app/examples/` | Example protocol diagrams |
+| `app/test/` | Waveform model and import/export tests |
+| `scripts/` | Local development and static builds |
 
 ## Contributing
 
-We welcome community contributions! You can:
-
-- Submit example timing diagrams
-- Report bugs or request features via GitHub Issues
-- Contribute documentation and tutorials
-- Share your WavePaint workflows and tips
+Report bugs and propose changes through [GitHub issues](https://github.com/lodigic/WavePaint/issues) and pull requests. Include a small example diagram or reproduction steps where useful. Run the relevant tests and update the affected guide when changing commands, file formats or editor behavior.
 
 ## License
 
-The content in this repository (examples, documentation, etc.) is open source and available under the MIT License. However, this does NOT include the WavePaint web application itself, which is proprietary software.
-
-## Links
-
-- 🌐 WavePaint Web Application: https://www.wavepaint.net/
-- 🐛 Issue Tracker: https://github.com/lodigic/WavePaint/issues
+WavePaint application code is licensed under [MIT](LICENSE). Third-party software retains its own licenses; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

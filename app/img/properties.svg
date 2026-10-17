@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <!-- Properties/Settings sliders icon -->
+  <path fill="white" d="M3 5h4v2H3V5zm6 0h12v2H9V5zm-6 6h8v2H3v-2zm10 0h8v2h-8v-2zm-10 6h6v2H3v-2zm8 0h10v2H11v-2z"/>
+  <circle fill="white" cx="9" cy="6" r="2"/>
+  <circle fill="white" cx="15" cy="12" r="2"/>
+  <circle fill="white" cx="11" cy="18" r="2"/>
+</svg>

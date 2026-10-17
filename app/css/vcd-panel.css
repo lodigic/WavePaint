@@ -1,0 +1,349 @@
+/**
+ * VCD Hierarchy Panel Styles
+ * Styles for the VCD signal hierarchy viewer
+ */
+
+/* ============================================
+   VCD PANEL CONTAINER
+   ============================================ */
+
+.vcd-hierarchy-panel {
+    position: fixed;
+    left: 0;
+    top: 80px; /* menu (32px) + toolbar (~48px) */
+    width: 350px;
+    height: calc(100vh - 80px);
+    background-color: var(--panel-bg, var(--menu-bg));
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    z-index: 50;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.vcd-hierarchy-panel.hidden {
+    transform: translateX(-100%);
+    pointer-events: none;
+}
+
+/* Adjust main area when panel is open */
+#main-area.with-vcd-panel {
+    margin-left: 350px;
+}
+
+/* ============================================
+   PANEL HEADER
+   ============================================ */
+
+.vcd-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background-color: var(--menu-bg);
+    border-bottom: 1px solid var(--border-color);
+    min-height: 40px;
+}
+
+.vcd-panel-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.vcd-panel-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.vcd-panel-btn {
+    background-color: var(--btn-bg, #f0f0f0);
+    border: 1px solid var(--border-color);
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--text-color);
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.vcd-panel-btn:hover {
+    background-color: var(--hover-bg);
+    border-color: var(--accent);
+}
+
+.vcd-panel-btn.close {
+    padding: 4px 8px;
+    font-size: 14px;
+    color: var(--text-muted, #888);
+}
+
+.vcd-panel-btn.close:hover {
+    background-color: #ff4444;
+    border-color: #ff4444;
+    color: white;
+}
+
+/* ============================================
+   SEARCH BAR
+   ============================================ */
+
+.vcd-panel-search {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.vcd-panel-search input {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--input-bg, white);
+    color: var(--text-color);
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.15s ease;
+}
+
+.vcd-panel-search input:focus {
+    border-color: var(--accent);
+}
+
+.vcd-panel-search input::placeholder {
+    color: var(--text-muted, #888);
+}
+
+/* ============================================
+   PANEL CONTENT - SPLITTER LAYOUT
+   ============================================ */
+
+.vcd-panel-content {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.vcd-panel-splitter {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.vcd-splitter-handle {
+    height: 6px;
+    background-color: var(--border-color);
+    cursor: row-resize;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.vcd-splitter-handle:hover {
+    background-color: var(--accent);
+}
+
+.vcd-splitter-handle::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 2px;
+    background-color: var(--text-muted, #888);
+    border-radius: 1px;
+}
+
+/* ============================================
+   HIERARCHY TREE
+   ============================================ */
+
+.vcd-hierarchy-tree {
+    flex: 0 0 auto;
+    height: 200px;
+    overflow: auto;
+    padding: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.vcd-tree-empty,
+.vcd-list-empty {
+    color: var(--text-muted, #888);
+    font-style: italic;
+    font-size: 13px;
+    text-align: center;
+    padding: 20px;
+}
+
+.vcd-tree-node {
+    padding-left: 0;
+}
+
+.vcd-tree-module {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 13px;
+    transition: background-color 0.1s ease;
+    user-select: none;
+}
+
+.vcd-tree-module:hover {
+    background-color: var(--hover-bg);
+}
+
+.vcd-tree-module.selected {
+    background-color: var(--accent-soft, rgba(76, 175, 80, 0.2));
+    color: var(--accent);
+}
+
+.vcd-tree-toggle {
+    width: 16px;
+    text-align: center;
+    font-size: 10px;
+    color: var(--text-muted, #888);
+    flex-shrink: 0;
+}
+
+.vcd-tree-icon {
+    margin: 0 6px;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.vcd-tree-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.vcd-tree-count {
+    color: var(--text-muted, #888);
+    font-size: 11px;
+    margin-left: 6px;
+}
+
+.vcd-tree-children {
+    padding-left: 16px;
+}
+
+.vcd-tree-children.hidden {
+    display: none;
+}
+
+/* ============================================
+   SIGNAL LIST
+   ============================================ */
+
+.vcd-signal-list {
+    flex: 1;
+    overflow: auto;
+    padding: 8px;
+}
+
+.vcd-signal-item {
+    display: flex;
+    align-items: center;
+    padding: 5px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 13px;
+    transition: background-color 0.1s ease;
+    user-select: none;
+    margin-bottom: 2px;
+}
+
+.vcd-signal-item:hover {
+    background-color: var(--hover-bg);
+}
+
+.vcd-signal-item.selected {
+    background-color: var(--accent-soft, rgba(76, 175, 80, 0.2));
+    border: 1px solid var(--accent);
+    margin-left: -1px;
+    margin-right: -1px;
+}
+
+.vcd-signal-icon {
+    margin-right: 8px;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.vcd-signal-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: 'Consolas', 'Monaco', monospace;
+}
+
+.vcd-signal-width {
+    color: var(--text-muted, #888);
+    font-size: 11px;
+    margin-left: 6px;
+    font-family: 'Consolas', 'Monaco', monospace;
+}
+
+/* ============================================
+   PANEL FOOTER
+   ============================================ */
+
+.vcd-panel-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 12px;
+    background-color: var(--menu-bg);
+    border-top: 1px solid var(--border-color);
+    font-size: 11px;
+    color: var(--text-muted, #888);
+}
+
+/* ============================================
+   DARK THEME ADJUSTMENTS
+   ============================================ */
+
+body.dark .vcd-hierarchy-panel {
+    --panel-bg: #2d2d2d;
+    --btn-bg: #3d3d3d;
+    --input-bg: #3d3d3d;
+}
+
+body.dark .vcd-panel-btn {
+    background-color: #3d3d3d;
+}
+
+body.dark .vcd-panel-search input {
+    background-color: #3d3d3d;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .vcd-hierarchy-panel {
+        width: 100%;
+        height: 40vh;
+        top: auto;
+        bottom: 0;
+        border-right: none;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .vcd-hierarchy-panel.hidden {
+        transform: translateY(100%);
+    }
+
+    #main-area.with-vcd-panel {
+        margin-left: 0;
+        margin-bottom: 40vh;
+    }
+}

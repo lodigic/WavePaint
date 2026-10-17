@@ -1,0 +1,97 @@
+{
+  "sampleCount": 26,
+  "subStepCount": 0,
+  "arrowColor": "#ef4444",
+  "signals": [
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "SCK",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.05,
+      "fallTime": 0.05,
+      "edgeArrow": "positive",
+      "values": [0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "SS̄",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "MOSI",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#e5e5e5",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [-2, -2, -2, -2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2, -2, -2, -2, -2, -2],
+      "labels": ["", "", "", "", "0x9F", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "Master",
+      "groupColor": "#3b82f6"
+    },
+    {
+      "name": "MISO",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#e5e5e5",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [-2, -2, -2, -2, -2, -2, 0, 0, 1, 1, 2, 2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2],
+      "labels": ["", "", "", "", "", "", "0xEF", "", "0x40", "", "0x17", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "Slave",
+      "groupColor": "#22c55e"
+    },
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "STATE",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#f5f5f5",
+      "riseTime": 0,
+      "fallTime": 0,
+      "values": [0, 0, 0, 0, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0],
+      "labels": ["IDLE", "", "", "", "CMD", "", "READ", "", "", "", "", "", "", "", "", "", "", "", "", "", "IDLE", "", "", "", "", ""]
+    }
+  ],
+  "markers": [
+    {"id": 1, "sample": 4, "color": "#3b82f6"},
+    {"id": 2, "sample": 20, "color": "#3b82f6"}
+  ],
+  "timeJumps": [],
+  "timeSpanMarkers": [
+    {"id": 1, "startSignal": 5, "startSample": 4, "endSignal": 5, "endSample": 6, "style": "-|-", "color": "#3b82f6", "label": "TX: 0x9F (RDID)"},
+    {"id": 2, "startSignal": 5, "startSample": 6, "endSignal": 5, "endSample": 12, "style": "-|-", "color": "#22c55e", "label": "RX: Manufacturer + Device ID"}
+  ],
+  "arrows": [
+    {"id": 1, "startSignal": 1, "startSample": 5, "endSignal": 3, "endSample": 6, "style": "~>", "color": "#ef4444"},
+    {"id": 2, "startSignal": 1, "startSample": 5, "endSignal": 4, "endSample": 6, "style": "~>", "color": "#ef4444"}
+  ],
+  "groups": [],
+  "textAnnotations": [
+    {"id": 1, "anchorType": 0, "anchorId": -1, "sample": 0, "vPos": 0, "text": "SPI Mode 0 (CPOL=0, CPHA=0)", "fontSize": 11, "bold": true, "color": "#000000"},
+    {"id": 2, "anchorType": 1, "anchorId": 2, "sample": 4, "vPos": -1, "text": "SS̄↓ = Start", "fontSize": 9, "bold": false, "color": "#000000"},
+    {"id": 3, "anchorType": 1, "anchorId": 2, "sample": 20, "vPos": -1, "text": "SS̄↑ = End", "fontSize": 9, "bold": false, "color": "#000000"},
+    {"id": 4, "anchorType": 1, "anchorId": 3, "sample": 4, "vPos": 1, "text": "JEDEC Read ID Command", "fontSize": 9, "bold": false, "color": "#000000"},
+    {"id": 5, "anchorType": 1, "anchorId": 4, "sample": 6, "vPos": 1, "text": "Winbond W25Q128", "fontSize": 9, "bold": false, "color": "#000000"},
+    {"id": 6, "anchorType": 1, "anchorId": 1, "sample": 5, "vPos": -1, "text": "Sample on ↑CLK", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 7, "anchorType": 0, "anchorId": -1, "sample": 0, "vPos": 8, "text": "Mode 0: Data sampled on rising edge, shifted on falling edge", "fontSize": 9, "bold": false, "color": "#000000"}
+  ]
+}

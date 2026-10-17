@@ -1,0 +1,356 @@
+/**
+ * Tutorial CSS - Quick Start Tutorial
+ * Contains: tutorial overlay, tooltips, step dots, highlight effects
+ * Simplified for a fast, user-friendly onboarding experience
+ */
+
+/* ============================================
+   OVERLAY
+   ============================================ */
+
+.wp-tutorial-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 99990;
+    animation: tutorialFadeIn 0.3s ease;
+    backdrop-filter: blur(2px);
+}
+
+@keyframes tutorialFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ============================================
+   TOOLTIP CONTAINER
+   ============================================ */
+
+.wp-tutorial-tooltip {
+    position: fixed;
+    max-width: 360px;
+    min-width: 280px;
+    background: var(--menu-bg, #252528);
+    color: var(--text-color, #e8e8ec);
+    padding: 0;
+    border-radius: 16px;
+    border: 1px solid var(--border-color, #3a3a3f);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    font-size: 14px;
+    line-height: 1.6;
+    z-index: 99996;
+    overflow: visible;
+    animation: tutorialSlideIn 0.3s ease;
+}
+
+.wp-tutorial-tooltip.wp-tutorial-quickstart {
+    max-width: 400px;
+}
+
+@keyframes tutorialSlideIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(15px) scale(0.97);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ============================================
+   PROGRESS BAR
+   ============================================ */
+
+.tutorial-progress {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px 16px 0 0;
+    overflow: hidden;
+}
+
+.tutorial-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50 0%, #81C784 100%);
+    border-radius: 0;
+    transition: width 0.4s ease;
+}
+
+/* ============================================
+   STEP DOTS
+   ============================================ */
+
+.tutorial-step-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 20px 8px;
+}
+
+.tutorial-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.tutorial-dot:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.2);
+}
+
+.tutorial-dot.active {
+    background: #4CAF50;
+    transform: scale(1.3);
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+}
+
+.tutorial-dot.completed {
+    background: rgba(76, 175, 80, 0.6);
+}
+
+/* ============================================
+   TITLE AND TEXT
+   ============================================ */
+
+.wp-tutorial-tooltip .title {
+    font-weight: 700;
+    margin: 8px 20px 12px;
+    color: var(--accent, #4CAF50);
+    font-size: 18px;
+    letter-spacing: -0.3px;
+}
+
+.wp-tutorial-tooltip .text {
+    padding: 0 20px 20px;
+    color: var(--text-color, #e8e8ec);
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.wp-tutorial-tooltip .text b {
+    color: #81C784;
+    font-weight: 600;
+}
+
+/* ============================================
+   ACTION BUTTONS
+   ============================================ */
+
+.wp-tutorial-tooltip .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: var(--section-bg, rgba(0, 0, 0, 0.2));
+    border-top: 1px solid var(--border-color, #3a3a3f);
+    border-radius: 0 0 16px 16px;
+}
+
+.wp-tutorial-tooltip .btn {
+    border: 1px solid var(--border-color, #3a3a3f);
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 150ms ease;
+    background: transparent;
+    color: var(--text-color, #e8e8ec);
+}
+
+.wp-tutorial-tooltip .btn:hover {
+    background: var(--accent-soft, rgba(76, 175, 80, 0.1));
+}
+
+.wp-tutorial-tooltip .btn.primary {
+    background: linear-gradient(135deg, #5DBE5D 0%, #4CAF50 50%, #43A047 100%);
+    border-color: #43A047;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.35);
+    margin-left: auto;
+    padding: 10px 24px;
+}
+
+.wp-tutorial-tooltip .btn.primary:hover {
+    background: linear-gradient(135deg, #6ECF6E 0%, #5DBE5D 50%, #4CAF50 100%);
+    border-color: #4CAF50;
+    box-shadow: 0 6px 16px rgba(76, 175, 80, 0.45);
+    transform: translateY(-1px);
+}
+
+.wp-tutorial-tooltip .btn.secondary {
+    background: transparent;
+    color: var(--text-muted, #888);
+    border-color: transparent;
+    padding: 10px 16px;
+}
+
+.wp-tutorial-tooltip .btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-color, #e8e8ec);
+}
+
+/* ============================================
+   ARROW POINTER
+   ============================================ */
+
+.wp-tutorial-arrow {
+    position: fixed;
+    width: 0;
+    height: 0;
+    z-index: 99995;
+    pointer-events: none;
+}
+
+/* Arrow pointing UP (tooltip is below target) */
+.wp-tutorial-arrow.arrow-up {
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 14px solid var(--menu-bg, #252528);
+}
+
+/* Arrow pointing DOWN (tooltip is above target) */
+.wp-tutorial-arrow.arrow-down {
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 14px solid var(--menu-bg, #252528);
+}
+
+/* Arrow pointing LEFT (tooltip is right of target) */
+.wp-tutorial-arrow.arrow-left {
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-right: 14px solid var(--menu-bg, #252528);
+}
+
+/* Arrow pointing RIGHT (tooltip is left of target) */
+.wp-tutorial-arrow.arrow-right {
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 14px solid var(--menu-bg, #252528);
+}
+
+/* ============================================
+   HIGHLIGHT EFFECT
+   ============================================ */
+
+.wp-tutorial-highlight {
+    z-index: 99992 !important;
+    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.5), 0 0 30px rgba(76, 175, 80, 0.35) !important;
+    border-radius: 6px;
+    animation: tutorialPulse 2s ease-in-out infinite;
+}
+
+/* Only add position relative to specific elements that need it */
+.tool-btn.wp-tutorial-highlight,
+.dropdown.wp-tutorial-highlight,
+.menu-item.wp-tutorial-highlight,
+.submenu li.wp-tutorial-highlight,
+input.wp-tutorial-highlight {
+    position: relative;
+}
+
+@keyframes tutorialPulse {
+    0%, 100% { 
+        box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.5), 0 0 30px rgba(76, 175, 80, 0.35);
+    }
+    50% { 
+        box-shadow: 0 0 0 6px rgba(76, 175, 80, 0.6), 0 0 40px rgba(76, 175, 80, 0.45);
+    }
+}
+
+/* ============================================
+   LIGHT THEME
+   ============================================ */
+
+body.light-theme .wp-tutorial-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+body.light-theme .wp-tutorial-tooltip {
+    background: #ffffff;
+    border-color: #ddd;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .wp-tutorial-tooltip .title {
+    color: #43A047;
+}
+
+body.light-theme .wp-tutorial-tooltip .text {
+    color: #333;
+}
+
+body.light-theme .wp-tutorial-tooltip .text b {
+    color: #2E7D32;
+}
+
+body.light-theme .tutorial-step-dots {
+    border-bottom-color: #eee;
+}
+
+body.light-theme .tutorial-dot {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+body.light-theme .tutorial-dot:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+body.light-theme .tutorial-dot.active {
+    background: #43A047;
+}
+
+body.light-theme .tutorial-dot.completed {
+    background: rgba(67, 160, 71, 0.5);
+}
+
+body.light-theme .tutorial-progress {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .wp-tutorial-tooltip .actions {
+    background: rgba(0, 0, 0, 0.03);
+    border-top-color: #eee;
+}
+
+body.light-theme .wp-tutorial-tooltip .btn {
+    border-color: #ddd;
+    color: #333;
+}
+
+body.light-theme .wp-tutorial-tooltip .btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .wp-tutorial-tooltip .btn.secondary {
+    color: #666;
+}
+
+body.light-theme .wp-tutorial-arrow.arrow-up {
+    border-bottom-color: #ffffff;
+}
+
+body.light-theme .wp-tutorial-arrow.arrow-down {
+    border-top-color: #ffffff;
+}
+
+body.light-theme .wp-tutorial-arrow.arrow-left {
+    border-right-color: #ffffff;
+}
+
+body.light-theme .wp-tutorial-arrow.arrow-right {
+    border-left-color: #ffffff;
+}
+
+body.light-theme .wp-tutorial-highlight {
+    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.4), 0 0 25px rgba(76, 175, 80, 0.25) !important;
+}

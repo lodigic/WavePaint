@@ -1,0 +1,154 @@
+{
+  "sampleCount": 34,
+  "subStepCount": 0,
+  "arrowColor": "#ef4444",
+  "signals": [
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "TX_CLK",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.05,
+      "fallTime": 0.05,
+      "edgeArrow": "positive",
+      "values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "TX",
+      "groupColor": "#22c55e"
+    },
+    {
+      "name": "TX_EN",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "TX",
+      "groupColor": "#22c55e"
+    },
+    {
+      "name": "TXD[3:0]",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#e5e5e5",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [-2, -2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, -2, -2, -2, -2],
+      "labels": ["", "", "5", "", "5", "", "5", "", "5", "", "5", "", "5", "", "5", "", "D", "", "DA", "", "SA", "", "T/L", "", "DATA", "", "...", "", "FCS", "", "", "", "", ""],
+      "groupName": "TX",
+      "groupColor": "#22c55e"
+    },
+    {
+      "name": "TX_ER",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "TX",
+      "groupColor": "#22c55e"
+    },
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "RX_CLK",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.05,
+      "fallTime": 0.05,
+      "edgeArrow": "positive",
+      "values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "RX",
+      "groupColor": "#3b82f6"
+    },
+    {
+      "name": "RX_DV",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "RX",
+      "groupColor": "#3b82f6"
+    },
+    {
+      "name": "RXD[3:0]",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#e5e5e5",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [-2, -2, -2, -2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, -2, -2],
+      "labels": ["", "", "", "", "5", "", "5", "", "5", "", "5", "", "5", "", "5", "", "5", "", "D", "", "DA", "", "SA", "", "T/L", "", "DATA", "", "...", "", "FCS", "", "", ""],
+      "groupName": "RX",
+      "groupColor": "#3b82f6"
+    },
+    {
+      "name": "RX_ER",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "RX",
+      "groupColor": "#3b82f6"
+    },
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "FRAME",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#f5f5f5",
+      "riseTime": 0,
+      "fallTime": 0,
+      "values": [-1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, -1, -1, -1, -1],
+      "labels": ["", "", "Preamble 0x55×7", "", "", "", "", "", "", "", "", "", "", "", "", "", "SFD 0xD5", "", "Frame: DA+SA+Type/Len+Payload", "", "", "", "", "", "", "", "", "", "FCS (CRC-32)", "", "", "", "", ""]
+    }
+  ],
+  "markers": [
+    {"id": 1, "sample": 17, "color": "#a855f7"}
+  ],
+  "timeJumps": [],
+  "timeSpanMarkers": [
+    {"id": 1, "startSignal": 5, "startSample": 2, "endSignal": 5, "endSample": 16, "style": "-|-", "color": "#64748b", "label": "Preamble (7 bytes × 0x55)"},
+    {"id": 2, "startSignal": 5, "startSample": 16, "endSignal": 5, "endSample": 18, "style": "-|-", "color": "#a855f7", "label": "SFD (0xD5)"},
+    {"id": 3, "startSignal": 5, "startSample": 18, "endSignal": 5, "endSample": 28, "style": "-|-", "color": "#22c55e", "label": "Ethernet Frame"},
+    {"id": 4, "startSignal": 5, "startSample": 28, "endSignal": 5, "endSample": 30, "style": "-|-", "color": "#f59e0b", "label": "FCS"}
+  ],
+  "arrows": [],
+  "groups": [],
+  "textAnnotations": [
+    {"id": 1, "anchorType": 0, "anchorId": -1, "sample": 0, "vPos": 0, "text": "MII 100BASE-TX (25MHz × 4 bits)", "fontSize": 11, "bold": true, "color": "#000000"},
+    {"id": 2, "anchorType": 1, "anchorId": 2, "sample": 2, "vPos": -1, "text": "TX_EN↑", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 3, "anchorType": 1, "anchorId": 2, "sample": 30, "vPos": -1, "text": "TX_EN↓", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 4, "anchorType": 1, "anchorId": 3, "sample": 2, "vPos": 1, "text": "0101...0101", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 5, "anchorType": 1, "anchorId": 3, "sample": 16, "vPos": 1, "text": "10101011", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 6, "anchorType": 0, "anchorId": -1, "sample": 0, "vPos": 12, "text": "MII: 4-bit interface @ 25MHz | Preamble: clock sync | SFD: Start Frame Delimiter", "fontSize": 9, "bold": false, "color": "#000000"},
+    {"id": 7, "anchorType": 1, "anchorId": 7, "sample": 4, "vPos": -1, "text": "RX_DV↑", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 8, "anchorType": 1, "anchorId": 3, "sample": 18, "vPos": 1, "text": "6B DA", "fontSize": 7, "bold": false, "color": "#000000"},
+    {"id": 9, "anchorType": 1, "anchorId": 3, "sample": 20, "vPos": 1, "text": "6B SA", "fontSize": 7, "bold": false, "color": "#000000"},
+    {"id": 10, "anchorType": 1, "anchorId": 3, "sample": 22, "vPos": 1, "text": "2B T/L", "fontSize": 7, "bold": false, "color": "#000000"}
+  ]
+}

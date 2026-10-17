@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <!-- First slash with stubs -->
+  <path d="M4 19 L6 19 Q7 19 8 17 L10 7 Q11 5 12 5 L14 5" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Second slash with stubs -->
+  <path d="M10 19 L12 19 Q13 19 14 17 L16 7 Q17 5 18 5 L20 5" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

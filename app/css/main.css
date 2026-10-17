@@ -1,0 +1,22 @@
+/**
+ * Main CSS Entry Point
+ * 
+ * This file imports all modular CSS files.
+ * The styles are organized by functionality:
+ * 
+ * - base.css: Reset, CSS variables, body styles
+ * - themes.css: Light/dark theme definitions
+ * - layout.css: Menu bar, toolbar, main area structure
+ * - components.css: Buttons, dropdowns, inputs, context menus
+ * - modals.css: Modal dialogs, theme dialog
+ * - color-picker.css: Color picker component
+ * - tutorial.css: Tutorial overlay and tooltips
+ */
+
+@import url('base.css');
+@import url('themes.css');
+@import url('layout.css');
+@import url('components.css');
+@import url('modals.css');
+@import url('color-picker.css');
+@import url('tutorial.css');

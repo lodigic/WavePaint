@@ -1,0 +1,152 @@
+{
+  "sampleCount": 30,
+  "subStepCount": 0,
+  "arrowColor": "#ef4444",
+  "signals": [
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "CLK_I",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.05,
+      "fallTime": 0.05,
+      "edgeArrow": "positive",
+      "values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "CYC_O",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "Master",
+      "groupColor": "#a855f7"
+    },
+    {
+      "name": "STB_O",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "Master",
+      "groupColor": "#a855f7"
+    },
+    {
+      "name": "WE_O",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "Master",
+      "groupColor": "#a855f7"
+    },
+    {
+      "name": "ADR_O",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#e5e5e5",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [-2, -2, 0, 0, 0, 0, 0, 0, -2, -2, -2, -2, -2, -2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -2, -2, -2, -2, -2, -2],
+      "labels": ["", "", "0x1000", "", "", "", "", "", "", "", "", "", "", "", "0x2000", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "Master",
+      "groupColor": "#a855f7"
+    },
+    {
+      "name": "DAT_O",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#e5e5e5",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [-2, -2, 0, 0, 0, 0, 0, 0, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2],
+      "labels": ["", "", "0xDEAD", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "Master",
+      "groupColor": "#a855f7"
+    },
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "ACK_I",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "Slave",
+      "groupColor": "#3b82f6"
+    },
+    {
+      "name": "DAT_I",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#e5e5e5",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [-2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, 0, 0, -2, -2, -2, -2, -2, -2],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "0xCAFE", "", "", "", "", "", "", ""],
+      "groupName": "Slave",
+      "groupColor": "#3b82f6"
+    },
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "WAIT",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#f5f5f5",
+      "riseTime": 0,
+      "fallTime": 0,
+      "values": [-1, -1, 0, 0, 1, 1, 2, 2, -1, -1, -1, -1, -1, -1, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "0", "", "1", "", "ACK", "", "", "", "", "", "", "", "0", "", "1", "", "2", "", "3", "", "ACK", "", "", "", "", "", "", ""]
+    }
+  ],
+  "markers": [
+    {"id": 1, "sample": 7, "color": "#22c55e"},
+    {"id": 2, "sample": 23, "color": "#3b82f6"}
+  ],
+  "timeJumps": [],
+  "timeSpanMarkers": [
+    {"id": 1, "startSignal": 10, "startSample": 2, "endSignal": 10, "endSample": 8, "style": "-|-", "color": "#22c55e", "label": "WR (2 wait cycles)"},
+    {"id": 2, "startSignal": 10, "startSample": 14, "endSignal": 10, "endSample": 24, "style": "-|-", "color": "#3b82f6", "label": "RD (4 wait cycles)"}
+  ],
+  "arrows": [
+    {"id": 1, "startSignal": 8, "startSample": 7, "endSignal": 11, "endSample": 8, "style": "-|>", "color": "#22c55e"},
+    {"id": 2, "startSignal": 8, "startSample": 23, "endSignal": 11, "endSample": 24, "style": "-|>", "color": "#3b82f6"}
+  ],
+  "groups": [],
+  "textAnnotations": [
+    {"id": 1, "anchorType": 0, "anchorId": -1, "sample": 0, "vPos": 0, "text": "Wishbone B4 Classic Cycle", "fontSize": 11, "bold": true, "color": "#000000"},
+    {"id": 2, "anchorType": 1, "anchorId": 4, "sample": 2, "vPos": -1, "text": "WE_O=1 (Write)", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 3, "anchorType": 1, "anchorId": 4, "sample": 14, "vPos": -1, "text": "WE_O=0 (Read)", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 4, "anchorType": 1, "anchorId": 8, "sample": 6, "vPos": 1, "text": "ACK_I=1", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 5, "anchorType": 1, "anchorId": 8, "sample": 22, "vPos": 1, "text": "ACK_I=1", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 6, "anchorType": 0, "anchorId": -1, "sample": 0, "vPos": 12, "text": "Cycle: CYC_O=1, STB_O=1 → wait ACK_I=1 → CYC_O=0, STB_O=0", "fontSize": 9, "bold": false, "color": "#000000"},
+    {"id": 7, "anchorType": 1, "anchorId": 2, "sample": 2, "vPos": 1, "text": "Cycle start", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 8, "anchorType": 1, "anchorId": 2, "sample": 8, "vPos": 1, "text": "Cycle end", "fontSize": 8, "bold": false, "color": "#000000"}
+  ]
+}

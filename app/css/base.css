@@ -1,0 +1,127 @@
+/**
+ * Base CSS - Reset and CSS Variables
+ * Contains: basic reset, CSS custom properties (theme variables)
+ */
+
+/* ============================================
+   Z-INDEX HIERARCHY (for reference)
+   ============================================
+   VCD Panel:           50
+   Dropdowns:          100
+   Submenu-content:    200
+   Debug Panel:        500
+   Modals:            5000
+   Properties Panel:  5100
+   Context Menus:     5500
+   Color Picker:      5600-5601
+   Menu Bar:          6000
+   Menu Submenus:     6100
+   Tooltips:          7000
+   ============================================ */
+
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Cross-browser compatibility */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Light theme (default) - WavePaint Green Palette */
+    --bg-color: #f0f2f0;
+    --menu-bg: #ffffff;
+    --toolbar-bg: #f8faf8;
+    --border-color: #d0dcd0;
+    --text-color: #1a1f1a;
+    --text-muted: #5a6a5a;
+    --hover-bg: #e8f0e8;
+    --active-bg: #d0e0d0;
+    --active-border: #4CAF50;
+    --side-bg: #f5f8f5;
+    --canvas-bg: #ffffff;
+    --accent: #4CAF50;
+    --accent-hover: #3d9141;
+    --accent-soft: rgba(76, 175, 80, 0.15);
+    --arrow-color: #ff6b00;
+    --signal-color: #2e7d32;
+    --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --shadow-strong: 0 12px 40px rgba(0, 0, 0, 0.18);
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    
+    /* Input styling */
+    --input-bg: #ffffff;
+    --input-border: #c0d0c0;
+    --input-focus: #4CAF50;
+    
+    /* Section styling */
+    --section-bg: #f8faf8;
+    --section-border: #e0e8e0;
+    --header-bg: #f0f4f0;
+    
+    /* Time axis styling */
+    --timeaxis-bg: #f0f2f0;
+    --timeaxis-text: #333333;
+    --timeaxis-tick: #888888;
+}
+
+body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    letter-spacing: 0.1px;
+    overflow: hidden;
+}
+
+html {
+    overflow: hidden;
+}
+
+/* Remove focus outline that causes scrollbars */
+button:focus,
+.tool-btn:focus {
+    outline: none;
+}
+/* ============================================
+   GLOBAL SCROLLBAR STYLING
+   Theme-coherent scrollbars for all elements
+   ============================================ */
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--section-bg);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 5px;
+    border: 2px solid var(--section-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+::-webkit-scrollbar-corner {
+    background: var(--section-bg);
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) var(--section-bg);
+}

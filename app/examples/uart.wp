@@ -1,0 +1,104 @@
+{
+  "sampleCount": 24,
+  "subStepCount": 0,
+  "arrowColor": "#ef4444",
+  "signals": [
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "BAUD×16",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.05,
+      "fallTime": 0.05,
+      "edgeArrow": "positive",
+      "values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "TX",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "UART TX",
+      "groupColor": "#3b82f6"
+    },
+    {
+      "name": "TX_BUSY",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "UART TX",
+      "groupColor": "#3b82f6"
+    },
+    {
+      "name": "TX_DATA",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#e5e5e5",
+      "riseTime": 0,
+      "fallTime": 0,
+      "values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "labels": ["0x55", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "UART TX",
+      "groupColor": "#3b82f6"
+    },
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "BIT_IDX",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#f5f5f5",
+      "riseTime": 0,
+      "fallTime": 0,
+      "values": [-1, -1, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, -1, -1, -1, -1],
+      "labels": ["", "", "St", "", "D0", "", "D1", "", "D2", "", "D3", "", "D4", "", "D5", "", "D6", "", "D7", "", "Sp", "", "", ""]
+    }
+  ],
+  "markers": [
+    {"id": 1, "sample": 2, "color": "#22c55e"},
+    {"id": 2, "sample": 20, "color": "#ef4444"}
+  ],
+  "timeJumps": [],
+  "timeSpanMarkers": [
+    {"id": 1, "startSignal": 5, "startSample": 2, "endSignal": 5, "endSample": 4, "style": "-|-", "color": "#22c55e", "label": "Start Bit"},
+    {"id": 2, "startSignal": 5, "startSample": 4, "endSignal": 5, "endSample": 20, "style": "-|-", "color": "#3b82f6", "label": "8 Data Bits (LSB first)"},
+    {"id": 3, "startSignal": 5, "startSample": 20, "endSignal": 5, "endSample": 22, "style": "-|-", "color": "#ef4444", "label": "Stop Bit"}
+  ],
+  "arrows": [
+    {"id": 1, "startSignal": 1, "startSample": 3, "endSignal": 2, "endSample": 4, "style": "-|>", "color": "#ef4444"}
+  ],
+  "groups": [],
+  "textAnnotations": [
+    {"id": 1, "anchorType": 0, "anchorId": -1, "sample": 0, "vPos": 0, "text": "UART 8N1 @ 115200 baud", "fontSize": 11, "bold": true, "color": "#000000"},
+    {"id": 2, "anchorType": 1, "anchorId": 2, "sample": 2, "vPos": -1, "text": "TX↓ Start", "fontSize": 9, "bold": false, "color": "#000000"},
+    {"id": 3, "anchorType": 1, "anchorId": 2, "sample": 20, "vPos": -1, "text": "TX↑ Stop", "fontSize": 9, "bold": false, "color": "#000000"},
+    {"id": 4, "anchorType": 1, "anchorId": 4, "sample": 0, "vPos": 0, "text": "= 0b01010101", "fontSize": 9, "bold": false, "color": "#000000"},
+    {"id": 5, "anchorType": 0, "anchorId": -1, "sample": 0, "vPos": 8, "text": "8 data bits, No parity, 1 stop bit — Idle high, Start=0, Stop=1", "fontSize": 9, "bold": false, "color": "#000000"},
+    {"id": 6, "anchorType": 1, "anchorId": 2, "sample": 4, "vPos": 1, "text": "1", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 7, "anchorType": 1, "anchorId": 2, "sample": 6, "vPos": 1, "text": "0", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 8, "anchorType": 1, "anchorId": 2, "sample": 8, "vPos": 1, "text": "1", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 9, "anchorType": 1, "anchorId": 2, "sample": 10, "vPos": 1, "text": "0", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 10, "anchorType": 1, "anchorId": 2, "sample": 12, "vPos": 1, "text": "1", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 11, "anchorType": 1, "anchorId": 2, "sample": 14, "vPos": 1, "text": "0", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 12, "anchorType": 1, "anchorId": 2, "sample": 16, "vPos": 1, "text": "1", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 13, "anchorType": 1, "anchorId": 2, "sample": 18, "vPos": 1, "text": "0", "fontSize": 8, "bold": false, "color": "#000000"}
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "sampleCount": 32,
+  "subStepCount": 0,
+  "arrowColor": "#ef4444",
+  "signals": [
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "CK",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.05,
+      "fallTime": 0.05,
+      "edgeArrow": "positive",
+      "values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "CS̄",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "CMD",
+      "groupColor": "#a855f7"
+    },
+    {
+      "name": "RAS̄",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "CMD",
+      "groupColor": "#a855f7"
+    },
+    {
+      "name": "CAS̄",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "CMD",
+      "groupColor": "#a855f7"
+    },
+    {
+      "name": "WĒ",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "CMD",
+      "groupColor": "#a855f7"
+    },
+    {
+      "name": "CMD",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#e5e5e5",
+      "riseTime": 0,
+      "fallTime": 0,
+      "values": [0, 0, 1, 1, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      "labels": ["NOP", "", "ACT", "", "NOP", "", "RD", "", "NOP", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "CMD",
+      "groupColor": "#a855f7"
+    },
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "BA[2:0]",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#e5e5e5",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [-2, -2, 0, 0, -2, -2, 0, 0, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2],
+      "labels": ["", "", "0", "", "", "", "0", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "ADDR",
+      "groupColor": "#f59e0b"
+    },
+    {
+      "name": "A[13:0]",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#e5e5e5",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [-2, -2, 0, 0, -2, -2, 1, 1, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2],
+      "labels": ["", "", "Row", "", "", "", "Col", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "ADDR",
+      "groupColor": "#f59e0b"
+    },
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "DQS",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "DATA",
+      "groupColor": "#22c55e"
+    },
+    {
+      "name": "DQ[7:0]",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#e5e5e5",
+      "riseTime": 0.05,
+      "fallTime": 0.05,
+      "values": [-2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, 0, 1, 2, 3, 4, 5, 6, 7, -2, -2, -2, -2, -2, -2, -2, -2, -2],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "D0", "D1", "D2", "D3", "D4", "D5", "D6", "D7", "", "", "", "", "", "", "", "", ""],
+      "groupName": "DATA",
+      "groupColor": "#22c55e"
+    },
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "PHASE",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#f5f5f5",
+      "riseTime": 0,
+      "fallTime": 0,
+      "values": [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0],
+      "labels": ["IDLE", "", "ACT", "", "tRCD", "", "RD", "", "tCL", "", "", "", "", "", "BURST", "", "", "", "", "", "", "", "", "", "IDLE", "", "", "", "", "", "", ""]
+    }
+  ],
+  "markers": [
+    {"id": 1, "sample": 3, "color": "#a855f7"},
+    {"id": 2, "sample": 7, "color": "#3b82f6"},
+    {"id": 3, "sample": 15, "color": "#22c55e"}
+  ],
+  "timeJumps": [],
+  "timeSpanMarkers": [
+    {"id": 1, "startSignal": 10, "startSample": 2, "endSignal": 10, "endSample": 6, "style": "-|-", "color": "#a855f7", "label": "tRCD (RAS to CAS)"},
+    {"id": 2, "startSignal": 13, "startSample": 6, "endSignal": 13, "endSample": 14, "style": "-|-", "color": "#f59e0b", "label": "tCL = 4 clk (CAS Latency)"},
+    {"id": 3, "startSignal": 13, "startSample": 14, "endSignal": 13, "endSample": 24, "style": "-|-", "color": "#22c55e", "label": "BL=8 (DDR: 8 transfers)"}
+  ],
+  "arrows": [
+    {"id": 1, "startSignal": 6, "startSample": 3, "endSignal": 6, "endSample": 6, "style": "->", "color": "#a855f7"},
+    {"id": 2, "startSignal": 6, "startSample": 7, "endSignal": 12, "endSample": 15, "style": "~>", "color": "#ef4444"}
+  ],
+  "groups": [],
+  "textAnnotations": [
+    {"id": 1, "anchorType": 0, "anchorId": -1, "sample": 0, "vPos": 0, "text": "DDR3-1600 Read (CL=11, BL=8)", "fontSize": 11, "bold": true, "color": "#000000"},
+    {"id": 2, "anchorType": 1, "anchorId": 6, "sample": 2, "vPos": 1, "text": "ACTIVATE", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 3, "anchorType": 1, "anchorId": 6, "sample": 6, "vPos": 1, "text": "READ", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 4, "anchorType": 1, "anchorId": 11, "sample": 14, "vPos": -1, "text": "DQS preamble", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 5, "anchorType": 1, "anchorId": 12, "sample": 15, "vPos": 1, "text": "Data valid on DQS edges", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 6, "anchorType": 0, "anchorId": -1, "sample": 0, "vPos": 15, "text": "DDR: Data on both CLK edges | tRCD: Row to Column delay | tCL: CAS Latency", "fontSize": 9, "bold": false, "color": "#000000"},
+    {"id": 7, "anchorType": 1, "anchorId": 9, "sample": 2, "vPos": 1, "text": "Row Addr", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 8, "anchorType": 1, "anchorId": 9, "sample": 6, "vPos": 1, "text": "Col Addr", "fontSize": 8, "bold": false, "color": "#000000"}
+  ]
+}

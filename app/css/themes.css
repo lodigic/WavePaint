@@ -1,0 +1,258 @@
+/**
+ * Themes CSS - Dark and Light Theme Definitions
+ * Contains: theme-specific variable overrides
+ */
+
+/* Dark theme - WavePaint Green Palette */
+body.dark {
+    --bg-color: #1a1a1c;
+    --menu-bg: #252528;
+    --toolbar-bg: #1e1e20;
+    --border-color: #3a3a3f;
+    --text-color: #e8e8ec;
+    --text-muted: #9999a5;
+    --hover-bg: #32323a;
+    --active-bg: #3a3a44;
+    --active-border: #7ee856;
+    --side-bg: #1a1a1c;
+    --canvas-bg: #ffffff;
+    --canvas-grid: #d0d0d5;
+    --canvas-text: #1a1a1c;
+    --signal-color: #1a1a1c;
+    --accent: #7ee856;
+    --accent-hover: #6bd648;
+    --accent-soft: rgba(126, 232, 86, 0.15);
+    --arrow-color: #ff9b50;
+    --shadow-soft: 0 12px 32px rgba(0, 0, 0, 0.4);
+    --shadow-strong: 0 16px 48px rgba(0, 0, 0, 0.5);
+    
+    /* Input styling */
+    --input-bg: #2a2a2e;
+    --input-border: #444449;
+    --input-focus: #7ee856;
+    
+    /* Section styling */
+    --section-bg: #1e1e20;
+    --section-border: #3a3a3f;
+    --header-bg: #1a1a1c;
+    
+    /* Time axis styling */
+    --timeaxis-bg: #2a2a2e;
+    --timeaxis-text: #e0e0e0;
+    --timeaxis-tick: #888888;
+    
+    /* Code Editor - Dark */
+    --code-editor-bg: #1e1e1e;
+    --code-editor-gutter: #252526;
+    --code-editor-border: #3c3c3c;
+    --code-editor-text: #d4d4d4;
+    --code-editor-line-num: #858585;
+    --code-editor-caret: #fff;
+    --code-editor-selection: rgba(38, 79, 120, 0.8);
+    --json-key: #9cdcfe;
+    --json-string: #ce9178;
+    --json-number: #b5cea8;
+    --json-boolean: #569cd6;
+    --json-null: #569cd6;
+    --json-bracket: #ffd700;
+    --json-brace: #da70d6;
+    --json-colon: #d4d4d4;
+    --json-comma: #d4d4d4;
+}
+
+/* Light theme (default) - Full palette */
+:root {
+    /* Core colors */
+    --accent: #4CAF50;
+    --accent-hover: #43A047;
+    --accent-soft: rgba(76, 175, 80, 0.12);
+    
+    /* Text */
+    --text-muted: #666;
+    
+    /* Canvas */
+    --canvas-bg: #ffffff;
+    --canvas-grid: #e0e0e0;
+    --canvas-text: #1a1a1c;
+    --signal-color: #000000;
+    
+    /* Inputs */
+    --input-bg: #ffffff;
+    --input-border: #d0d0d0;
+    --input-focus: #4CAF50;
+    
+    /* Sections */
+    --section-bg: #f5f5f5;
+    --section-border: #e0e0e0;
+    --header-bg: #fafafa;
+    
+    /* Shadows */
+    --shadow-strong: 0 12px 40px rgba(0, 0, 0, 0.15);
+    
+    /* Code Editor - Light */
+    --code-editor-bg: #ffffff;
+    --code-editor-gutter: #f5f5f5;
+    --code-editor-border: #e0e0e0;
+    --code-editor-text: #333333;
+    --code-editor-line-num: #999999;
+    --code-editor-caret: #000;
+    --code-editor-selection: rgba(173, 214, 255, 0.8);
+    --json-key: #0451a5;
+    --json-string: #a31515;
+    --json-number: #098658;
+    --json-boolean: #0000ff;
+    --json-null: #0000ff;
+    --json-bracket: #0431fa;
+    --json-brace: #800080;
+    --json-colon: #333333;
+    --json-comma: #333333;
+}
+
+/* Dark theme image adjustments */
+body.dark .tool-btn img {
+    filter: none;
+}
+
+/* Canvas color override - Dark canvas */
+body.dark.canvas-dark {
+    --canvas-bg: #0d0d0f;
+    --canvas-grid: #2a2a2f;
+    --canvas-text: #e8e8ec;
+    --signal-color: #4CAF50;
+}
+
+/* Canvas color override for light theme */
+body.canvas-dark {
+    --canvas-bg: #1a1a1c;
+    --canvas-grid: #2a2a2f;
+    --canvas-text: #e8e8ec;
+    --signal-color: #4CAF50;
+}
+
+/* Light theme image adjustments */
+.tool-btn img {
+    width: 16px;
+    height: 16px;
+    filter: invert(1);
+}
+/* ============================================
+   SKINS UI COMPONENTS
+   ============================================ */
+
+/* Skin section description */
+.theme-dialog-section-description {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+/* Skins container grid */
+.skins-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 4px;
+}
+
+/* Individual skin option card */
+.skin-option {
+    position: relative;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: var(--section-bg);
+}
+
+.skin-option:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.skin-option.selected {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+}
+
+/* Skin preview area */
+.skin-preview {
+    width: 100%;
+    height: 40px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Color swatches row */
+.skin-swatches {
+    display: flex;
+    gap: 3px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Individual color swatch */
+.skin-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.skin-swatch-small {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+}
+
+/* Skin name label */
+.skin-name {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-top: 4px;
+}
+
+/* Selected checkmark */
+.skin-check {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 18px;
+    height: 18px;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.2s ease;
+}
+
+.skin-option.selected .skin-check {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ============================================
+   SKIN-SPECIFIC SIGNAL COLOR OVERRIDES
+   Skins only affect signals and arrows, NOT canvas
+   ============================================ */
+
+/* Skin signal color overrides (canvas colors are NOT affected by skins) */
+body[class*="skin-"] {
+    --signal-color: var(--skin-signal-color, #000000);
+}

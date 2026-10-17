@@ -1,0 +1,122 @@
+{
+  "sampleCount": 32,
+  "subStepCount": 0,
+  "arrowColor": "#ef4444",
+  "signals": [
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "SCL",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.2,
+      "fallTime": 0.1,
+      "values": [1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "I²C Bus",
+      "groupColor": "#f59e0b"
+    },
+    {
+      "name": "SDA",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.2,
+      "fallTime": 0.1,
+      "values": [1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+      "groupName": "I²C Bus",
+      "groupColor": "#f59e0b"
+    },
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "ADDR[6:0]",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#e5e5e5",
+      "riseTime": 0,
+      "fallTime": 0,
+      "values": [-2, -2, -2, -2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2],
+      "labels": ["", "", "", "", "0x50", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "R/W̄",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "W", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "ACK/NACK",
+      "type": "bit",
+      "color": "#000000",
+      "riseTime": 0.1,
+      "fallTime": 0.1,
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, -1, -1, -1, -1, 0, 0, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "A", "", "", "", "", "", "A", "", "", "", "", ""]
+    },
+    {
+      "name": "DATA[7:0]",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#e5e5e5",
+      "riseTime": 0,
+      "fallTime": 0,
+      "values": [-2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, 0, 0, 0, 0, -2, -2, -2, -2, -2, -2],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "0xA5", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "",
+      "type": "blank",
+      "color": "#000000",
+      "values": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+      "labels": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    },
+    {
+      "name": "STATE",
+      "type": "vector",
+      "color": "#000000",
+      "fill": "#f5f5f5",
+      "riseTime": 0,
+      "fallTime": 0,
+      "values": [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 3, 3, 4, 4, 4, 4, 5, 5, 0, 0, 0, 0],
+      "labels": ["IDLE", "", "", "", "ADDR", "", "", "", "", "", "", "", "", "", "", "", "", "", "R/W", "", "ACK", "", "DATA", "", "", "", "ACK", "", "STOP", "", "", ""]
+    }
+  ],
+  "markers": [
+    {"id": 1, "sample": 2, "color": "#22c55e"},
+    {"id": 2, "sample": 29, "color": "#ef4444"}
+  ],
+  "timeJumps": [],
+  "timeSpanMarkers": [
+    {"id": 1, "startSignal": 8, "startSample": 4, "endSignal": 8, "endSample": 20, "style": "-|-", "color": "#3b82f6", "label": "Address Phase (7+1+1 bits)"},
+    {"id": 2, "startSignal": 8, "startSample": 22, "endSignal": 8, "endSample": 28, "style": "-|-", "color": "#22c55e", "label": "Data Phase (8+1 bits)"}
+  ],
+  "arrows": [
+    {"id": 1, "startSignal": 2, "startSample": 2, "endSignal": 9, "endSample": 4, "style": "-|>", "color": "#22c55e"},
+    {"id": 2, "startSignal": 6, "startSample": 21, "endSignal": 9, "endSample": 22, "style": "~>", "color": "#ef4444"},
+    {"id": 3, "startSignal": 2, "startSample": 29, "endSignal": 9, "endSample": 30, "style": "-|>", "color": "#ef4444"}
+  ],
+  "groups": [],
+  "textAnnotations": [
+    {"id": 1, "anchorType": 0, "anchorId": -1, "sample": 0, "vPos": 0, "text": "I²C Write @ 400kHz (Fast Mode)", "fontSize": 11, "bold": true, "color": "#000000"},
+    {"id": 2, "anchorType": 1, "anchorId": 2, "sample": 2, "vPos": -1, "text": "START", "fontSize": 9, "bold": true, "color": "#000000"},
+    {"id": 3, "anchorType": 1, "anchorId": 2, "sample": 29, "vPos": -1, "text": "STOP", "fontSize": 9, "bold": true, "color": "#000000"},
+    {"id": 4, "anchorType": 0, "anchorId": -1, "sample": 0, "vPos": 10, "text": "START: SDA↓ while SCL=1 | STOP: SDA↑ while SCL=1", "fontSize": 9, "bold": false, "color": "#000000"},
+    {"id": 5, "anchorType": 1, "anchorId": 6, "sample": 20, "vPos": 1, "text": "ACK=0 (Slave pulls SDA low)", "fontSize": 8, "bold": false, "color": "#000000"},
+    {"id": 6, "anchorType": 1, "anchorId": 4, "sample": 4, "vPos": 1, "text": "EEPROM 24C02", "fontSize": 9, "bold": false, "color": "#000000"},
+    {"id": 7, "anchorType": 1, "anchorId": 1, "sample": 5, "vPos": -1, "text": "Sample on SCL↑", "fontSize": 8, "bold": false, "color": "#000000"}
+  ]
+}
