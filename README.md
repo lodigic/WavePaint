@@ -2,7 +2,7 @@
 
 WavePaint is a browser editor for digital timing diagrams and waveforms. Draw signals, buses, clocks, groups, arrows, markers and annotations, then keep the diagram as a local file.
 
-**[🌐 Open the editor](https://www.wavepaint.net/)** · **[☕ Support on Ko-fi](https://ko-fi.com/wavepaint)**
+**[🌐 Open the editor](https://www.wavepaint.net/app)** · **[☕ Support on Ko-fi](https://ko-fi.com/wavepaint)**
 
 This repository contains the application source, examples and tests under the MIT license.
 
