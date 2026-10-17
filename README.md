@@ -1,5 +1,7 @@
 # 🌊 WavePaint
 
+![WavePaint editor showing an SPI timing diagram](img/digital-timing-editor-online.webp)
+
 WavePaint is a browser editor for digital timing diagrams and waveforms. Draw signals, buses, clocks, groups, arrows, markers and annotations, then keep the diagram as a local file.
 
 **[🌐 Open the editor](https://www.wavepaint.net/app)** · **[☕ Support on Ko-fi](https://ko-fi.com/wavepaint)**
