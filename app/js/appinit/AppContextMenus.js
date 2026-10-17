@@ -409,13 +409,13 @@ function handleCanvasContextMenu(e) {
         const signalEffectiveCount = document_wave.getSignalEffectiveSampleCount
             ? document_wave.getSignalEffectiveSampleCount(signal)
             : signal.values.length;
-        // Usar mapToSignalSample para cálculo preciso del índice de muestra (usa Math.floor)
+        // Use mapToSignalSample for a precise sample index (it uses Math.floor)
         let sampleIndex;
         if (typeof mapToSignalSample === 'function') {
             const mapped = mapToSignalSample(mouseX, mouseY);
             sampleIndex = mapped ? mapped.sampleIndex : -1;
         } else {
-            // Fallback: usar Math.floor para detectar el sample correcto
+            // Fallback: use Math.floor to detect the correct sample
             const subStepCount = (signal.subSteps && signal.subSteps > 0)
                 ? signal.subSteps
                 : document_wave.subStepCount();

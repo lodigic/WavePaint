@@ -153,7 +153,7 @@ function buildDocumentJson(doc) {
                 so.subSteps = s.subSteps;
             }
             
-            // Group info (modelo simplificado)
+            // Group info (simplified model)
             if (s.groupName) {
                 so.groupName = s.groupName;
             }
@@ -228,8 +228,8 @@ function buildDocumentJson(doc) {
         }
         root.arrows = arrowArray;
 
-        // Groups ya no se guardan como array separado
-        // Los grupos se reconstruyen de signal.groupName al cargar
+        // Groups are no longer saved as a separate array
+        // They are rebuilt from signal.groupName on load
 
         // Text Annotations - now uses fractional positions
         const annArray = [];
@@ -487,7 +487,7 @@ function loadFromFileContent(doc, fileContent) {
                 s.subSteps = so.subSteps;
             }
             
-            // Load group info (modelo simplificado)
+            // Load group info (simplified model)
             if (so.groupName) {
                 s.groupName = so.groupName;
             }
@@ -677,10 +677,10 @@ function loadFromFileContent(doc, fileContent) {
                 doc.m_nextArrowId = id + 1;
         }
 
-        // Compatibilidad: migrar archivos antiguos con grupos a nuevo formato
+        // Compatibility: migrate old files that store groups into the new format
         const groupArray = root.groups || [];
         if (groupArray.length > 0) {
-            // Archivo antiguo con grupos - migrar a groupName
+            // Old file with groups: migrate them to groupName
             for (const go of groupArray) {
                 const name = go.name || 'Group';
                 const color = go.color || '#6496C8';
@@ -688,7 +688,7 @@ function loadFromFileContent(doc, fileContent) {
                 
                 for (const idx of indicesArray) {
                     if (idx >= 0 && idx < doc.m_signals.length) {
-                        // Solo asignar si la señal no tiene ya un groupName
+                        // Assign only when the signal does not already have a groupName
                         if (!doc.m_signals[idx].groupName) {
                             doc.m_signals[idx].groupName = name;
                             doc.m_signals[idx].groupColor = color;

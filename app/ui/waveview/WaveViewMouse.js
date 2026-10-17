@@ -1,16 +1,16 @@
 // WaveViewMouse.js - Mouse event handling
 
 /**
- * Calcula la posición final para mover una señal individual.
- * 
- * REGLA FUNDAMENTAL:
- * - Una señal SIN grupo NO puede entrar a NINGÚN grupo bajo ningún concepto
- * - Solo puede moverse a posiciones que estén COMPLETAMENTE fuera de todos los grupos
- * - Los grupos son "bloques sólidos" que la señal debe saltar
- * 
- * LÓGICA: 
- * - Señal SIN grupo: solo puede ir a posiciones fuera de cualquier grupo
- * - Señal CON grupo: se mueve dentro de su grupo, saltando subgrupos
+ * Computes the final position for moving a single signal.
+ *
+ * FUNDAMENTAL RULE:
+ * - A signal with NO group must never enter ANY group
+ * - It can only move to positions that are completely outside every group
+ * - Groups are solid blocks that the signal must jump over
+ *
+ * LOGIC:
+ * - Signal with NO group: it can only go to positions outside any group
+ * - Signal WITH a group: it moves inside its group, jumping over subgroups
  */
 function calculateSignalMoveTarget(currentIdx, targetIdx, signals, groups) {
     if (currentIdx === targetIdx) return currentIdx;
@@ -18,9 +18,9 @@ function calculateSignalMoveTarget(currentIdx, targetIdx, signals, groups) {
     const currentSig = signals[currentIdx];
     const signalGroupName = currentSig ? currentSig.groupName : null;
     
-    // CASO: Señal CON grupo - se mueve dentro de su grupo pero salta sobre subgrupos
+    // CASE: signal WITH a group - it moves inside its group but jumps over subgroups
     if (signalGroupName && groups.length > 0) {
-        // Encontrar el grupo exacto de esta señal
+        // Find this signal's exact group
         let signalGroup = null;
         for (const g of groups) {
             if (g.name === signalGroupName) {
@@ -33,14 +33,14 @@ function calculateSignalMoveTarget(currentIdx, targetIdx, signals, groups) {
             return targetIdx;
         }
         
-        // Limitar al rango del grupo
+        // Clamp to the group's range
         let clampedTarget = Math.max(signalGroup.startIndex, Math.min(signalGroup.endIndex, targetIdx));
         
-        // Encontrar subgrupos directos (hijos inmediatos) de este grupo
+        // Find direct subgroups (immediate children) of this group
         const prefix = signalGroupName + '/';
         const childGroups = groups.filter(g => {
             if (!g.name.startsWith(prefix)) return false;
-            // Verificar que sea hijo directo (no nieto)
+            // Require a direct child (not a grandchild)
             const remainder = g.name.substring(prefix.length);
             return !remainder.includes('/');
         });
@@ -51,21 +51,21 @@ function calculateSignalMoveTarget(currentIdx, targetIdx, signals, groups) {
         
         const movingDown = targetIdx > currentIdx;
         
-        // Verificar si el target cae dentro de algún subgrupo hijo
+        // Check whether the target falls inside a child subgroup
         for (const child of childGroups) {
             if (clampedTarget >= child.startIndex && clampedTarget <= child.endIndex) {
-                // El target está dentro de un subgrupo - saltar al otro lado
+                // The target is inside a subgroup; jump to the other side
                 if (movingDown) {
-                    // Saltar DESPUÉS del subgrupo
+                    // Jump AFTER the subgroup
                     clampedTarget = child.endIndex + 1;
-                    // Verificar que no exceda el límite del grupo padre
+                    // Do not go past the parent group's end
                     if (clampedTarget > signalGroup.endIndex) {
                         clampedTarget = signalGroup.endIndex;
                     }
                 } else {
-                    // Saltar ANTES del subgrupo
+                    // Jump BEFORE the subgroup
                     clampedTarget = child.startIndex - 1;
-                    // Verificar que no sea menor que el inicio del grupo padre
+                    // Do not go before the parent group's start
                     if (clampedTarget < signalGroup.startIndex) {
                         clampedTarget = signalGroup.startIndex;
                     }
@@ -77,15 +77,15 @@ function calculateSignalMoveTarget(currentIdx, targetIdx, signals, groups) {
         return clampedTarget;
     }
     
-    // CASO: Señal SIN grupo - puede posicionarse ENTRE grupos
-    // IMPORTANTE: Cuando movemos una señal, primero se ELIMINA de currentIdx,
-    // lo que hace que todos los grupos después de currentIdx se desplacen hacia arriba.
-    // Debemos calcular las posiciones de los grupos DESPUÉS de la eliminación.
-    // El targetIdx usado por splice() ya opera en el array "post-eliminación".
+    // CASE: signal with NO group - it may sit BETWEEN groups
+    // IMPORTANT: moving a signal first REMOVES it from currentIdx,
+    // which shifts every group after currentIdx upward.
+    // Group positions must be computed AFTER that removal.
+    // The targetIdx used by splice() already refers to the post-removal array.
     const movingDown = targetIdx > currentIdx;
     const movingUp = targetIdx < currentIdx;
     
-    // Obtener grupos raíz ordenados por posición
+    // Get root groups ordered by position
     const rawGroups = groups.filter(g => 
         typeof GroupManager === 'undefined' || !GroupManager.getParentGroupName(g.name)
     ).sort((a, b) => a.startIndex - b.startIndex);
@@ -94,8 +94,8 @@ function calculateSignalMoveTarget(currentIdx, targetIdx, signals, groups) {
         return targetIdx;
     }
     
-    // Ajustar las posiciones de los grupos para reflejar dónde estarán DESPUÉS de eliminar la señal
-    // Cualquier grupo cuyo startIndex > currentIdx se desplazará -1
+    // Adjust group positions to where they will be AFTER the signal is removed
+    // Any group whose startIndex > currentIdx shifts by -1
     const adjustedGroups = rawGroups.map(g => {
         const shift = g.startIndex > currentIdx ? -1 : 0;
         return {
@@ -108,15 +108,15 @@ function calculateSignalMoveTarget(currentIdx, targetIdx, signals, groups) {
     console.log('[SIGNAL MOVE] currentIdx:', currentIdx, 'targetIdx:', targetIdx);
     console.log('[SIGNAL MOVE] adjustedGroups:', adjustedGroups.map(g => `${g.name}[${g.startIndex}-${g.endIndex}]`).join(', '));
     
-    // Función para verificar si un índice está ESTRICTAMENTE dentro de un grupo ajustado
-    // "Estrictamente dentro" significa que insertar ahí pondría la señal ENTRE miembros del grupo
-    // startIndex es válido (insertar ahí empuja todo el grupo hacia abajo)
-    // endIndex+1 es válido (insertar ahí pone la señal DESPUÉS del grupo)
+    // Returns whether an index is STRICTLY inside an adjusted group
+    // "Strictly inside" means inserting there would place the signal BETWEEN group members
+    // startIndex is valid (inserting there pushes the whole group down)
+    // endIndex + 1 is valid (inserting there places the signal AFTER the group)
     function isStrictlyInsideAdjustedGroup(idx) {
         for (const g of adjustedGroups) {
-            // idx > startIndex: no está antes del grupo
-            // idx <= endIndex: está en o antes del último miembro
-            // Combinado: está entre el primer y último miembro (inclusive del último)
+            // idx > startIndex: it is not before the group
+            // idx <= endIndex: it is at or before the last member
+            // Combined: it is between the first and last member (including the last)
             if (idx > g.startIndex && idx <= g.endIndex) {
                 return g;
             }
@@ -124,7 +124,7 @@ function calculateSignalMoveTarget(currentIdx, targetIdx, signals, groups) {
         return null;
     }
     
-    // Verificar si targetIdx está estrictamente dentro de algún grupo ajustado
+    // Check whether targetIdx is strictly inside an adjusted group
     let blockingGroup = isStrictlyInsideAdjustedGroup(targetIdx);
     if (!blockingGroup) {
         console.log('[SIGNAL MOVE] Target is valid (outside groups), using:', targetIdx);
@@ -133,15 +133,15 @@ function calculateSignalMoveTarget(currentIdx, targetIdx, signals, groups) {
     
     console.log('[SIGNAL MOVE] Target is strictly inside group:', blockingGroup.name, `[${blockingGroup.startIndex}-${blockingGroup.endIndex}]`);
     
-    // El target está estrictamente dentro de un grupo - saltar al borde apropiado
+    // The target is strictly inside a group; jump to the appropriate edge
     let finalTarget;
     
     if (movingDown) {
-        // Saltar DESPUÉS del grupo (endIndex + 1 en el espacio ajustado)
+        // Jump AFTER the group (endIndex + 1 in the adjusted space)
         finalTarget = blockingGroup.endIndex + 1;
         console.log('[SIGNAL MOVE] Moving down, jumping to:', finalTarget);
         
-        // Seguir saltando si el nuevo target está estrictamente dentro de otro grupo
+        // Keep jumping while the new target is strictly inside another group
         let safety = adjustedGroups.length + 1;
         while (safety > 0) {
             safety--;
@@ -151,20 +151,20 @@ function calculateSignalMoveTarget(currentIdx, targetIdx, signals, groups) {
             finalTarget = nextBlock.endIndex + 1;
         }
     } else {
-        // Moviendo hacia arriba - saltar al startIndex del grupo (antes del grupo)
+        // Moving up: jump to the group's startIndex (before the group)
         finalTarget = blockingGroup.startIndex;
         console.log('[SIGNAL MOVE] Moving up, jumping to startIndex:', finalTarget);
     }
     
     console.log('[SIGNAL MOVE] Final target:', finalTarget);
     
-    // Verificar límites (en el espacio del array post-eliminación, que tiene signals.length - 1 elementos)
+    // Check bounds (in the post-removal array, which has signals.length - 1 elements)
     if (finalTarget < 0) {
         console.log('[SIGNAL MOVE] Invalid target < 0, staying at:', currentIdx);
         return currentIdx;
     }
     if (finalTarget >= signals.length) {
-        // El máximo índice válido para insertar es signals.length - 1 (al final)
+        // The highest valid insert index is signals.length - 1 (the end)
         console.log('[SIGNAL MOVE] Target at end, using:', signals.length - 1);
         return signals.length - 1;
     }
@@ -208,8 +208,8 @@ async function handleMouseEvent(e) {
             e.preventDefault();
             e.stopPropagation();
             
-            // Usar getSignalsInGroupRecursive para incluir señales de subgrupos
-            // Así al mover un grupo padre, se mueven todos sus hijos también
+            // Use getSignalsInGroupRecursive so subgroup signals are included
+            // Moving a parent group then moves all of its children too
             const groupSignalIndices = GroupManager.getSignalsInGroupRecursive(document_wave, hitGroup.name);
             if (groupSignalIndices.length > 0) {
                 selectedSignalIndices = [...groupSignalIndices].sort((a, b) => a - b);
@@ -872,10 +872,10 @@ function handleMouseMove(e, signals, signalIndex, signal, sampleIndex, effective
         if (isMultiMove) {
             handleMultiSignalDrag(clampedIdx);
         } else {
-            // Movimiento de señal individual - calcular destino final
+            // Single-signal move: compute the final destination
             const groups = typeof GroupManager !== 'undefined' ? GroupManager.getGroups(document_wave) : [];
             
-            // Calcular posición final con lógica de salto
+            // Compute the final position with jump logic
             const finalTargetIdx = calculateSignalMoveTarget(moveSignalIndex, clampedIdx, signals, groups);
             
             if (finalTargetIdx !== moveSignalIndex) {
@@ -1065,9 +1065,9 @@ function handleMouseMove(e, signals, signalIndex, signal, sampleIndex, effective
 
 /**
  * Handle multi-signal drag
- * En el nuevo modelo, groupName viaja con la señal, no hay necesidad de moveGroup especial
- * - Si es un subgrupo, solo puede moverse dentro del padre y salta sobre subgrupos hermanos
- * - Si es un grupo raíz, salta sobre otros grupos raíz (no puede meterse dentro)
+ * In the new model, groupName travels with the signal, so no special moveGroup is needed
+ * - A subgroup can only move inside its parent and jumps over sibling subgroups
+ * - A root group jumps over other root groups (it cannot move inside one)
  */
 function handleMultiSignalDrag(clampedIdx) {
     const sortedSel = [...selectedSignalIndices].sort((a, b) => a - b);
@@ -1075,7 +1075,7 @@ function handleMultiSignalDrag(clampedIdx) {
     const maxSel = sortedSel[sortedSel.length - 1];
     const selectionSize = sortedSel.length;
     
-    // Verificar si estamos moviendo un grupo
+    // Check whether a group is being moved
     let parentBounds = null;
     let isRootGroup = false;
     let parentName = null;
@@ -1083,7 +1083,7 @@ function handleMultiSignalDrag(clampedIdx) {
     if (pendingMoveGroup && typeof GroupManager !== 'undefined') {
         parentName = GroupManager.getParentGroupName(pendingMoveGroup.name);
         if (parentName) {
-            // Es un subgrupo, obtener los límites del grupo padre
+            // This is a subgroup; get the parent group's bounds
             const groups = GroupManager.getGroups(document_wave);
             const parentGroup = groups.find(g => g.name === parentName);
             if (parentGroup) {
@@ -1093,7 +1093,7 @@ function handleMultiSignalDrag(clampedIdx) {
                 };
             }
         } else {
-            // Es un grupo raíz - debe saltar sobre otros grupos raíz
+            // This is a root group; it must jump over other root groups
             isRootGroup = true;
         }
     }
@@ -1108,12 +1108,12 @@ function handleMultiSignalDrag(clampedIdx) {
         targetIdx = clampedIdx - selectionSize + 1;
     }
     
-    // Aplicar restricción de límites del padre si existe (subgrupos)
+    // Apply the parent bounds when this is a subgroup
     if (parentBounds !== null && targetIdx >= 0) {
         let newMinPos = targetIdx;
         let newMaxPos = targetIdx + selectionSize - 1;
         
-        // No permitir mover fuera del grupo padre
+        // Do not allow a move outside the parent group
         if (newMinPos < parentBounds.startIndex) {
             targetIdx = parentBounds.startIndex;
             newMinPos = targetIdx;
@@ -1125,33 +1125,33 @@ function handleMultiSignalDrag(clampedIdx) {
             newMaxPos = targetIdx + selectionSize - 1;
         }
         
-        // Verificar colisiones con subgrupos hermanos (mismo padre)
+        // Check collisions with sibling subgroups (same parent)
         if (typeof GroupManager !== 'undefined') {
             const groups = GroupManager.getGroups(document_wave);
             
-            // Obtener subgrupos hermanos (mismo padre, excluyendo el que movemos)
+            // Get sibling subgroups (same parent, excluding the one being moved)
             const siblingGroups = groups.filter(g => {
                 const gParent = GroupManager.getParentGroupName(g.name);
-                if (gParent !== parentName) return false; // No es hermano
-                if (g.name === pendingMoveGroup.name) return false; // Es el grupo que movemos
+                if (gParent !== parentName) return false; // Not a sibling
+                if (g.name === pendingMoveGroup.name) return false; // This is the group being moved
                 return true;
             });
             
-            // Verificar si la nueva posición colisiona con algún hermano
+            // Check whether the new position overlaps a sibling
             for (const sibling of siblingGroups) {
                 const overlaps = newMinPos <= sibling.endIndex && newMaxPos >= sibling.startIndex;
                 
                 if (overlaps) {
-                    // Hay colisión - saltar al otro lado del hermano
+                    // Overlap: jump to the other side of the sibling
                     if (movingDown) {
                         targetIdx = sibling.endIndex + 1;
-                        // No exceder límite del padre
+                        // Do not go past the parent's end
                         if (targetIdx + selectionSize - 1 > parentBounds.endIndex) {
                             targetIdx = parentBounds.endIndex - selectionSize + 1;
                         }
                     } else if (movingUp) {
                         targetIdx = sibling.startIndex - selectionSize;
-                        // No bajar del límite del padre
+                        // Do not go before the parent's start
                         if (targetIdx < parentBounds.startIndex) {
                             targetIdx = parentBounds.startIndex;
                         }
@@ -1162,16 +1162,16 @@ function handleMultiSignalDrag(clampedIdx) {
         }
     }
     
-    // Si es un grupo raíz, verificar que no colisione con otros grupos raíz
+    // If this is a root group, make sure it does not overlap other root groups
     if (isRootGroup && targetIdx >= 0 && typeof GroupManager !== 'undefined') {
         const groups = GroupManager.getGroups(document_wave);
         const signals = document_wave.signalList();
         
-        // Obtener otros grupos raíz (excluyendo el que estamos moviendo)
+        // Get the other root groups (excluding the one being moved)
         const otherRootGroups = groups.filter(g => {
-            if (GroupManager.getParentGroupName(g.name)) return false; // No es raíz
-            if (g.name === pendingMoveGroup.name) return false; // Es el grupo que movemos
-            // Verificar que no sea un subgrupo del grupo que movemos
+            if (GroupManager.getParentGroupName(g.name)) return false; // Not a root group
+            if (g.name === pendingMoveGroup.name) return false; // This is the group being moved
+            // Skip a subgroup of the group being moved
             if (g.name.startsWith(pendingMoveGroup.name + '/')) return false;
             return true;
         });
@@ -1179,18 +1179,18 @@ function handleMultiSignalDrag(clampedIdx) {
         const newMinPos = targetIdx;
         const newMaxPos = targetIdx + selectionSize - 1;
         
-        // Verificar si la nueva posición colisiona con algún otro grupo raíz
+        // Check whether the new position overlaps another root group
         for (const otherGroup of otherRootGroups) {
-            // Verificar si hay solapamiento
+            // Check for overlap
             const overlaps = newMinPos <= otherGroup.endIndex && newMaxPos >= otherGroup.startIndex;
             
             if (overlaps) {
-                // Hay colisión - saltar al otro lado del grupo
+                // Overlap: jump to the other side of the group
                 if (movingDown) {
-                    // Saltar DESPUÉS del otro grupo
+                    // Jump AFTER the other group
                     targetIdx = otherGroup.endIndex + 1;
                 } else if (movingUp) {
-                    // Saltar ANTES del otro grupo
+                    // Jump BEFORE the other group
                     targetIdx = otherGroup.startIndex - selectionSize;
                     if (targetIdx < 0) targetIdx = 0;
                 }
@@ -1198,7 +1198,7 @@ function handleMultiSignalDrag(clampedIdx) {
             }
         }
         
-        // Verificar límites del documento
+        // Check the document bounds
         if (targetIdx < 0) targetIdx = 0;
         if (targetIdx + selectionSize > signals.length) {
             targetIdx = signals.length - selectionSize;
@@ -1206,8 +1206,8 @@ function handleMultiSignalDrag(clampedIdx) {
     }
     
     if (targetIdx >= 0 && targetIdx !== minSel) {
-        // En el nuevo modelo, groupName viaja con la señal como atributo
-        // No necesitamos lógica especial para grupos
+        // In the new model, groupName travels with the signal as an attribute
+        // No special group logic is needed
         const newIndices = document_wave.moveSignals(selectedSignalIndices, targetIdx);
         if (newIndices.length > 0) {
             selectedSignalIndices = newIndices;

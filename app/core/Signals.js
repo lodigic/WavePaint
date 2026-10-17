@@ -1,6 +1,6 @@
 // Signals.js - Signal manipulation for WaveDocument
-// NOTA: Los grupos usan el modelo simplificado con signal.groupName
-// No hay m_signalGroups array - los grupos se descubren dinámicamente
+// NOTE: Groups use the simplified model with signal.groupName
+// There is no m_signalGroups array; groups are discovered dynamically
 
 /**
  * Removes a signal by index.

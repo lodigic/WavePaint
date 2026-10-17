@@ -1,6 +1,6 @@
 /**
  * Signal Group Context Menu - Right-click context menu for signal grouping
- * (Versión simplificada - usa groupName en vez de groupId)
+ * (Simplified version: uses groupName instead of groupId)
  */
 
 /**
@@ -62,10 +62,10 @@ function showSignalGroupContextMenu(clientX, clientY, selectedSignalIndices) {
         menu.appendChild(sep);
     }
 
-    // Check if selected signals are in a group (usando el nuevo modelo simplificado)
+    // Check if selected signals are in a group (simplified groupName model)
     const signals = document_wave.signalList();
     
-    // Verificar si ALGUNA señal seleccionada está en un grupo
+    // Check whether ANY selected signal is in a group
     let existingGroupName = null;
     let anySignalInGroup = false;
     for (const idx of selectedSignalIndices) {
@@ -81,10 +81,10 @@ function showSignalGroupContextMenu(clientX, clientY, selectedSignalIndices) {
     const groupShortName = existingGroupName ? GroupManager.getShortGroupName(existingGroupName) : null;
     const isSubgroup = existingGroupName && existingGroupName.includes('/');
 
-    // Create Group o Create Subgroup (si hay múltiples señales seleccionadas)
+    // Create Group or Create Subgroup (when several signals are selected)
     if (selectedSignalIndices.length > 1) {
         if (anySignalInGroup) {
-            // Si alguna señal está en un grupo, solo ofrecer crear subgrupo
+            // If any signal is in a group, only offer to create a subgroup
             addMenuItem(`Create Subgroup in "${groupShortName}"...`, async () => {
                 const subName = prompt('Enter subgroup name:', 'Subgroup');
                 if (subName && subName.trim()) {
@@ -95,7 +95,7 @@ function showSignalGroupContextMenu(clientX, clientY, selectedSignalIndices) {
                 }
             });
         } else {
-            // Si ninguna señal está en un grupo, ofrecer crear grupo nuevo
+            // If no signal is in a group, offer to create a new group
             addMenuItem('Create Group...', async () => {
                 const groupName = prompt('Enter group name:', 'Group');
                 if (groupName && groupName.trim()) {
@@ -107,7 +107,7 @@ function showSignalGroupContextMenu(clientX, clientY, selectedSignalIndices) {
         }
     }
 
-    // Si la señal está en un grupo, mostrar opciones
+    // If the signal is in a group, show the group options
     if (existingGroupName) {
         if (selectedSignalIndices.length > 1) {
             addSeparator();
@@ -117,7 +117,7 @@ function showSignalGroupContextMenu(clientX, clientY, selectedSignalIndices) {
             const newName = prompt(`Enter new name for ${isSubgroup ? 'subgroup' : 'group'}:`, groupShortName);
             if (newName && newName.trim()) {
                 document_wave.pushUndoSnapshot();
-                // Mantener la jerarquía del padre si es un subgrupo
+                // Keep the parent hierarchy when this is a subgroup
                 const parentPath = GroupManager.getParentGroupName(existingGroupName);
                 const finalName = parentPath ? parentPath + '/' + newName.trim() : newName.trim();
                 GroupManager.renameGroup(document_wave, existingGroupName, finalName);
@@ -140,7 +140,7 @@ function showSignalGroupContextMenu(clientX, clientY, selectedSignalIndices) {
         });
     }
     
-    // Si no hay opciones, no mostrar menú vacío
+    // If there are no options, do not show an empty menu
     if (menu.children.length === 0) {
         return;
     }

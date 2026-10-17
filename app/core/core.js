@@ -38,7 +38,7 @@ class SegmentStyle {
     }
 }
 
-// SignalGroup class eliminada - ahora usamos groupName directamente en Signal
+// SignalGroup class removed; groupName now lives directly on Signal
 
 class Signal {
     constructor(name = '', type = SignalType.Bit, samples = 0) {
@@ -117,7 +117,7 @@ class WaveDocument {
         this.m_timeSpanMarkers = [];
         this.m_arrows = [];
         this.m_textAnnotations = [];
-        // m_signalGroups ya no se usa - los grupos se obtienen de signal.groupName
+        // m_signalGroups is no longer used; groups come from signal.groupName
         this.m_hasBlockClipboard = false;
         this.m_nextArrowId = 1;
         this.m_nextMarkerId = 1;
@@ -714,9 +714,9 @@ class WaveDocument {
     }
 
     // ========================================
-    // Signal Group Management (Simplificado)
-    // Los grupos ahora se manejan a través de GroupManager
-    // usando signal.groupName directamente
+    // Signal Group Management (simplified)
+    // Groups are now handled through GroupManager
+    // using signal.groupName directly
     // ========================================
     
     /**

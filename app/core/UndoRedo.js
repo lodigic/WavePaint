@@ -10,7 +10,7 @@ const MAX_UNDO_STACK_SIZE = 100;
  */
 WaveDocument.prototype.pushUndoSnapshot = function() {
     // Create a deep copy of current state
-    // Los grupos ahora están en signal.groupName, no necesitan guardarse separadamente
+    // Groups now live on signal.groupName and do not need to be stored separately
     const snapshot = {
         signals: JSON.parse(JSON.stringify(this.m_signals)),
         markers: JSON.parse(JSON.stringify(this.m_markers)),

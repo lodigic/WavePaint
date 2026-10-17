@@ -1,37 +1,37 @@
 /**
- * Groups.js - Sistema Simplificado de Grupos de Señales
+ * Groups.js - Simplified signal group system
  * 
- * MODELO SIMPLE:
- * - Cada señal tiene un campo `groupName` (string o null)
- * - Señales con el mismo groupName forman un grupo visual
- * - Los subgrupos usan nombres jerárquicos: "Parent/Child/Grandchild"
- * - Los grupos se "descubren" dinámicamente de las señales
+ * SIMPLE MODEL:
+ * - Each signal has a `groupName` field (string or null)
+ * - Signals with the same groupName form a visual group
+ * - Subgroups use hierarchical names: "Parent/Child/Grandchild"
+ * - Groups are discovered dynamically from the signals
  */
 
 // ============================================
-// Constantes Visuales de Grupos
+// Group visual constants
 // ============================================
 
 const GROUP_VISUAL = {
     bracketWidth: 10,
-    bracketPadding: 32,    // Espacio inicial antes del primer bracket
+    bracketPadding: 32,    // Initial space before the first bracket
     curveRadius: 5,
     lineWidth: 2,
     signalIndent: 12,
-    subgroupIndent: 24,    // Separación entre niveles de subgrupos
+    subgroupIndent: 24,    // Gap between subgroup levels
     defaultColor: '#6496C8',
     headerHeight: 24,
     headerPadding: 4,
-    // Colores por nivel de profundidad (para cuando no hay color asignado)
+    // Colors by depth level (used when no color is assigned)
     depthColors: ['#6496C8', '#96C864', '#C89664', '#9664C8', '#64C896']
 };
 
 // ============================================
-// Funciones Auxiliares de Jerarquía
+// Hierarchy helpers
 // ============================================
 
 /**
- * Obtiene el nivel de profundidad de un grupo por su nombre
+ * Returns the depth of a group from its name
  * "Group" -> 0, "Parent/Child" -> 1, "A/B/C" -> 2
  */
 function getGroupDepth(groupName) {
@@ -40,7 +40,7 @@ function getGroupDepth(groupName) {
 }
 
 /**
- * Obtiene el nombre padre de un subgrupo
+ * Returns the parent name of a subgroup
  * "Parent/Child" -> "Parent", "Group" -> null
  */
 function getParentGroupName(groupName) {
@@ -49,7 +49,7 @@ function getParentGroupName(groupName) {
 }
 
 /**
- * Obtiene el nombre corto (sin el path) de un grupo
+ * Returns the short name (without the path) of a group
  * "Parent/Child" -> "Child", "Group" -> "Group"
  */
 function getShortGroupName(groupName) {
@@ -59,14 +59,14 @@ function getShortGroupName(groupName) {
 }
 
 // ============================================
-// Funciones de Consulta de Grupos
+// Group query functions
 // ============================================
 
 /**
- * Obtiene todos los grupos únicos del documento, incluyendo grupos padre inferidos
- * Un grupo incluye todas las señales con el mismo groupName
- * El bracket va desde la primera hasta la última señal del grupo
- * Para subgrupos, también se crean los grupos padre automáticamente
+ * Returns every unique group in the document, including inferred parent groups
+ * A group includes every signal with the same groupName
+ * The bracket runs from the first signal of the group to the last
+ * Parent groups are also created automatically for subgroups
  * @returns {Array<{name: string, color: string, startIndex: number, endIndex: number, depth: number, shortName: string}>}
  */
 function getGroups(doc) {
@@ -78,7 +78,7 @@ function getGroups(doc) {
         const groupName = signal.groupName || null;
         
         if (groupName) {
-            // Registrar el grupo de la señal
+            // Register the signal's group
             if (groupMap.has(groupName)) {
                 const group = groupMap.get(groupName);
                 group.endIndex = i;
@@ -93,16 +93,16 @@ function getGroups(doc) {
                 });
             }
             
-            // También registrar todos los grupos padre para crear jerarquía visual
+            // Also register every parent group so the visual hierarchy exists
             let parentName = getParentGroupName(groupName);
             while (parentName) {
                 if (groupMap.has(parentName)) {
-                    // Extender el grupo padre para incluir esta señal
+                    // Extend the parent group to include this signal
                     const parent = groupMap.get(parentName);
                     if (i < parent.startIndex) parent.startIndex = i;
                     if (i > parent.endIndex) parent.endIndex = i;
                 } else {
-                    // Crear grupo padre
+                    // Create the parent group
                     groupMap.set(parentName, {
                         name: parentName,
                         shortName: getShortGroupName(parentName),
@@ -117,7 +117,7 @@ function getGroups(doc) {
         }
     }
     
-    // Convertir a array y ordenar por depth (padres primero) y luego por startIndex
+    // Convert to an array and sort by depth (parents first), then by startIndex
     return Array.from(groupMap.values()).sort((a, b) => {
         if (a.depth !== b.depth) return a.depth - b.depth;
         return a.startIndex - b.startIndex;
@@ -125,7 +125,7 @@ function getGroups(doc) {
 }
 
 /**
- * Obtiene el nombre del grupo de una señal
+ * Returns the group name of a signal
  */
 function getSignalGroupName(doc, signalIndex) {
     const signals = doc.m_signals || [];
@@ -134,14 +134,14 @@ function getSignalGroupName(doc, signalIndex) {
 }
 
 /**
- * Verifica si una señal está en un grupo
+ * Returns whether a signal belongs to a group
  */
 function isSignalInGroup(doc, signalIndex) {
     return getSignalGroupName(doc, signalIndex) !== null;
 }
 
 /**
- * Obtiene todas las señales de un grupo por nombre (solo exacto)
+ * Returns every signal in a group by name (exact match only)
  */
 function getSignalsInGroup(doc, groupName) {
     const signals = doc.m_signals || [];
@@ -155,8 +155,8 @@ function getSignalsInGroup(doc, groupName) {
 }
 
 /**
- * Obtiene todas las señales de un grupo incluyendo subgrupos
- * Por ejemplo, si groupName es "Bus", incluirá señales de "Bus", "Bus/Address", "Bus/Data", etc.
+ * Returns every signal in a group, including subgroups
+ * For example, if groupName is "Bus", this includes "Bus", "Bus/Address", "Bus/Data", and so on
  */
 function getSignalsInGroupRecursive(doc, groupName) {
     const signals = doc.m_signals || [];
@@ -166,7 +166,7 @@ function getSignalsInGroupRecursive(doc, groupName) {
     for (let i = 0; i < signals.length; i++) {
         const sigGroupName = signals[i].groupName;
         if (sigGroupName) {
-            // Incluir si es exactamente el grupo o si es un subgrupo
+            // Include an exact group match and any subgroup
             if (sigGroupName === groupName || sigGroupName.startsWith(prefix)) {
                 indices.push(i);
             }
@@ -176,7 +176,7 @@ function getSignalsInGroupRecursive(doc, groupName) {
 }
 
 /**
- * Obtiene el grupo que contiene una señal específica (para hit test)
+ * Returns the group that contains a specific signal (for hit testing)
  */
 function getGroupContainingSignal(doc, signalIndex) {
     const groups = getGroups(doc);
@@ -189,15 +189,15 @@ function getGroupContainingSignal(doc, signalIndex) {
 }
 
 // ============================================
-// Funciones de Modificación de Grupos
+// Group modification functions
 // ============================================
 
 /**
- * Crea un grupo con las señales seleccionadas
+ * Creates a group from the selected signals
  * @param {WaveDocument} doc 
- * @param {string} name - Nombre del grupo
- * @param {number[]} signalIndices - Índices de las señales a agrupar
- * @param {string} color - Color del grupo (opcional)
+ * @param {string} name - Group name
+ * @param {number[]} signalIndices - Indices of the signals to group
+ * @param {string} color - Group color (optional)
  */
 function createGroup(doc, name, signalIndices, color = null) {
     const signals = doc.m_signals || [];
@@ -212,12 +212,12 @@ function createGroup(doc, name, signalIndices, color = null) {
 }
 
 /**
- * Añade señales a un grupo existente
+ * Adds signals to an existing group
  */
 function addSignalsToGroup(doc, groupName, signalIndices) {
     const signals = doc.m_signals || [];
     
-    // Obtener color del grupo existente
+    // Take the color from the existing group
     let groupColor = GROUP_VISUAL.defaultColor;
     for (const sig of signals) {
         if (sig.groupName === groupName && sig.groupColor) {
@@ -235,7 +235,7 @@ function addSignalsToGroup(doc, groupName, signalIndices) {
 }
 
 /**
- * Elimina señales de su grupo (las desagrupa)
+ * Removes signals from their group (ungroups them)
  */
 function removeSignalsFromGroup(doc, signalIndices) {
     const signals = doc.m_signals || [];
@@ -248,7 +248,7 @@ function removeSignalsFromGroup(doc, signalIndices) {
 }
 
 /**
- * Renombra un grupo
+ * Renames a group
  */
 function renameGroup(doc, oldName, newName) {
     const signals = doc.m_signals || [];
@@ -260,7 +260,7 @@ function renameGroup(doc, oldName, newName) {
 }
 
 /**
- * Cambia el color de un grupo
+ * Changes a group's color
  */
 function setGroupColor(doc, groupName, color) {
     const signals = doc.m_signals || [];
@@ -272,7 +272,7 @@ function setGroupColor(doc, groupName, color) {
 }
 
 /**
- * Elimina un grupo completamente (desagrupa todas sus señales)
+ * Deletes a group completely (ungroups all of its signals)
  */
 function deleteGroup(doc, groupName) {
     const signals = doc.m_signals || [];
@@ -285,7 +285,7 @@ function deleteGroup(doc, groupName) {
 }
 
 /**
- * Obtiene la lista de nombres de grupos únicos
+ * Returns the list of unique group names
  */
 function getGroupNames(doc) {
     const signals = doc.m_signals || [];
@@ -299,12 +299,12 @@ function getGroupNames(doc) {
 }
 
 // ============================================
-// Funciones de Renderizado
+// Rendering functions
 // ============================================
 
 /**
- * Dibuja los brackets de grupos en el canvas
- * Soporta subgrupos con indentación visual
+ * Draws group brackets on the canvas
+ * Supports subgroups with visual indentation
  */
 function drawGroupBrackets(ctx, doc, signals, signalStartY, rowHeight, nameWidth) {
     const groups = getGroups(doc);
@@ -312,7 +312,7 @@ function drawGroupBrackets(ctx, doc, signals, signalStartY, rowHeight, nameWidth
     
     const textColor = getComputedStyle(document.body).getPropertyValue('--canvas-text').trim() || '#000';
     
-    // Ordenar por profundidad para dibujar padres primero (de afuera hacia adentro)
+    // Sort by depth so parents are drawn first (outside in)
     const sortedGroups = [...groups].sort((a, b) => a.depth - b.depth);
     
     for (const group of sortedGroups) {
@@ -320,14 +320,14 @@ function drawGroupBrackets(ctx, doc, signals, signalStartY, rowHeight, nameWidth
         const endY = signalStartY + (group.endIndex + 1) * rowHeight - 6;
         const bracketHeight = endY - startY;
         
-        if (bracketHeight < 10) continue; // Grupo demasiado pequeño
+        if (bracketHeight < 10) continue; // Group is too small
         
-        // Indent del bracket según profundidad del subgrupo
+        // Bracket indent follows the subgroup depth
         const depthIndent = group.depth * GROUP_VISUAL.subgroupIndent;
         const bracketX = GROUP_VISUAL.bracketPadding + depthIndent;
         const bracketWidth = 8;
         
-        // Color del grupo - usar color asignado o color por profundidad
+        // Group color: use the assigned color, or a color by depth
         const depthColorIndex = group.depth % GROUP_VISUAL.depthColors.length;
         const defaultDepthColor = GROUP_VISUAL.depthColors[depthColorIndex];
         const bracketColor = group.color || defaultDepthColor;
@@ -339,23 +339,23 @@ function drawGroupBrackets(ctx, doc, signals, signalStartY, rowHeight, nameWidth
         ctx.lineJoin = 'round';
         ctx.setLineDash([]);
         
-        // Dibujar bracket en forma de [
+        // Draw a bracket shaped like [
         const r = Math.min(GROUP_VISUAL.curveRadius, bracketHeight / 4);
         
         ctx.beginPath();
-        // Brazo superior
+        // Top arm
         ctx.moveTo(bracketX + bracketWidth, startY);
         ctx.lineTo(bracketX + r, startY);
         ctx.quadraticCurveTo(bracketX, startY, bracketX, startY + r);
-        // Línea vertical
+        // Vertical line
         ctx.lineTo(bracketX, endY - r);
-        // Brazo inferior
+        // Bottom arm
         ctx.quadraticCurveTo(bracketX, endY, bracketX + r, endY);
         ctx.lineTo(bracketX + bracketWidth, endY);
         ctx.stroke();
         
-        // Dibujar nombre del grupo (rotado verticalmente)
-        // Usar shortName para subgrupos
+        // Draw the group name (rotated vertically)
+        // Use shortName for subgroups
         const displayGroupName = group.shortName || group.name;
         if (displayGroupName && bracketHeight > 20) {
             ctx.save();
@@ -370,7 +370,7 @@ function drawGroupBrackets(ctx, doc, signals, signalStartY, rowHeight, nameWidth
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
             
-            // Truncar nombre si es muy largo
+            // Truncate the name if it is too long
             let finalName = displayGroupName;
             const maxWidth = bracketHeight - 8;
             let measured = ctx.measureText(finalName).width;
@@ -389,7 +389,7 @@ function drawGroupBrackets(ctx, doc, signals, signalStartY, rowHeight, nameWidth
 }
 
 /**
- * Calcula el indent extra para el nombre de la señal según su grupo y profundidad
+ * Returns the extra indent for a signal name based on its group and depth
  */
 function getSignalNameIndent(doc, signalIndex) {
     const signals = doc.m_signals || [];
@@ -403,36 +403,36 @@ function getSignalNameIndent(doc, signalIndex) {
 }
 
 /**
- * Hit test para clicks en el bracket del grupo
- * Cada nivel de grupo tiene su zona horizontal exclusiva
- * Click en zona izquierda = grupo padre, zona derecha = subgrupo
+ * Hit test for clicks on a group bracket
+ * Each group level has its own exclusive horizontal zone
+ * A click on the left zone selects the parent group; the right zone selects the subgroup
  */
 function hitTestGroupBracket(doc, mouseX, mouseY, signalStartY, rowHeight, signals) {
     const groups = getGroups(doc);
     if (groups.length === 0) return null;
     
-    // Encontrar la profundidad máxima
+    // Find the maximum depth
     const maxDepth = groups.reduce((max, g) => Math.max(max, g.depth), 0);
     
-    // Procesar desde el nivel más profundo hacia arriba
-    // Cada nivel tiene su zona horizontal exclusiva
+    // Process from the deepest level upward
+    // Each level has its own exclusive horizontal zone
     for (let depth = maxDepth; depth >= 0; depth--) {
         const groupsAtDepth = groups.filter(g => g.depth === depth);
         
         for (const group of groupsAtDepth) {
-            // Calcular zona horizontal exclusiva para este nivel
-            // El bracket está en: bracketPadding + depth * subgroupIndent
+            // Compute the exclusive horizontal zone for this level
+            // The bracket sits at: bracketPadding + depth * subgroupIndent
             const bracketX = GROUP_VISUAL.bracketPadding + depth * GROUP_VISUAL.subgroupIndent;
             
-            // Zona exclusiva: desde el bracket de este nivel hasta el bracket del siguiente nivel
-            const hitLeft = bracketX - 20; // Un poco antes del bracket para fácil click
+            // Exclusive zone: from this level's bracket to the next level's bracket
+            const hitLeft = bracketX - 20; // A little before the bracket, so it is easy to click
             const nextBracketX = GROUP_VISUAL.bracketPadding + (depth + 1) * GROUP_VISUAL.subgroupIndent;
-            const hitRight = nextBracketX - 5; // Hasta justo antes del siguiente nivel
+            const hitRight = nextBracketX - 5; // Stop just before the next level
             
             const startY = signalStartY + group.startIndex * rowHeight;
             const endY = signalStartY + (group.endIndex + 1) * rowHeight;
             
-            // Check vertical primero, luego horizontal
+            // Check vertical first, then horizontal
             if (mouseY >= startY && mouseY <= endY &&
                 mouseX >= hitLeft && mouseX < hitRight) {
                 return group;
@@ -444,20 +444,20 @@ function hitTestGroupBracket(doc, mouseX, mouseY, signalStartY, rowHeight, signa
 }
 
 // ============================================
-// Exportar API
+// Export the API
 // ============================================
 
 if (typeof window !== 'undefined') {
     window.GroupManager = {
-        // Constantes
+        // Constants
         VISUAL: GROUP_VISUAL,
         
-        // Jerarquía
+        // Hierarchy
         getGroupDepth,
         getParentGroupName,
         getShortGroupName,
         
-        // Consultas
+        // Queries
         getGroups,
         getSignalGroupName,
         isSignalInGroup,
@@ -466,7 +466,7 @@ if (typeof window !== 'undefined') {
         getGroupContainingSignal,
         getGroupNames,
         
-        // Modificación
+        // Modification
         createGroup,
         addSignalsToGroup,
         removeSignalsFromGroup,
@@ -474,7 +474,7 @@ if (typeof window !== 'undefined') {
         setGroupColor,
         deleteGroup,
         
-        // Renderizado
+        // Rendering
         drawGroupBrackets,
         getSignalNameIndent,
         hitTestGroupBracket

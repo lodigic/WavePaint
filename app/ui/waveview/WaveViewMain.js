@@ -127,7 +127,7 @@ function drawWaveform() {
         
         // Highlight signal being dragged
         if (isMovingSignal && selectedSignalIndices.length <= 1 && index === moveSignalIndex) {
-            // Calcular el inicio de la selección basado en el grupo de la señal
+            // Compute the selection start from the signal's group
             let selectionStartX = 0;
             if (typeof GroupManager !== 'undefined' && signal.groupName) {
                 const groups = GroupManager.getGroups(document_wave);
@@ -247,7 +247,7 @@ function drawSignalName(ctx, signal, index, signals, rowHeight, signalStartY, na
     // Calculate indentation based on group depth using GroupManager
     const groups = typeof GroupManager !== 'undefined' ? GroupManager.getGroups(document_wave) : [];
     const maxGroupDepth = groups.reduce((max, g) => Math.max(max, (g.depth || 0) + 1), 0);
-    // Usar los mismos valores que GROUP_VISUAL para consistencia
+    // Use the same values as GROUP_VISUAL so the layout stays consistent
     const bracketPadding = typeof GroupManager !== 'undefined' ? GroupManager.VISUAL.bracketPadding : 64;
     const subgroupIndent = typeof GroupManager !== 'undefined' ? GroupManager.VISUAL.subgroupIndent : 36;
     const bracketAreaWidth = maxGroupDepth > 0 ? (bracketPadding + maxGroupDepth * subgroupIndent + 10) : 0;

@@ -936,7 +936,7 @@ function exportToWaveDrom(doc) {
         nodeCharCode = result.nodeCharCode;
     }
 
-    // Obtener grupos del nuevo modelo simplificado
+    // Read groups from the simplified model
     const groups = typeof GroupManager !== 'undefined' ? GroupManager.getGroups(doc) : [];
 
     // If we have preserved signal structure (for groups), use it
@@ -963,20 +963,20 @@ function exportToWaveDrom(doc) {
             maxSubSteps
         );
     } else if (groups && groups.length > 0) {
-        // Build structure from WavePaint groups (nuevo modelo simplificado)
-        // Los grupos ahora son: { name, color, startIndex, endIndex }
+        // Build structure from WavePaint groups (simplified model)
+        // Groups are now: { name, color, startIndex, endIndex }
         const processedSignals = new Set();
         
-        // Procesar señales en orden, agrupando las que pertenecen a grupos
+        // Walk signals in order and group the ones that belong to a group
         let i = 0;
         while (i < signals.length) {
             const signal = signals[i];
             
-            // Buscar si esta señal pertenece a un grupo
+            // Find whether this signal belongs to a group
             const group = groups.find(g => i >= g.startIndex && i <= g.endIndex);
             
             if (group && !processedSignals.has(group.name)) {
-                // Crear array de grupo con todas las señales del grupo
+                // Build a group array with every signal in the group
                 const groupArray = [group.name];
                 for (let j = group.startIndex; j <= group.endIndex; j++) {
                     groupArray.push(

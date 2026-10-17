@@ -205,13 +205,13 @@ function showSignalContextMenu(clientX, clientY, signalIndex, signal) {
             });
         }
 
-        // Signal Group options (modelo simplificado con GroupManager)
+        // Signal group options (simplified model via GroupManager)
         addSeparator();
         
         // Get group information for selected signals
         const signals = document_wave.signalList();
         
-        // Verificar si ALGUNA señal seleccionada está en un grupo
+        // Check whether ANY selected signal is in a group
         let existingGroupName = null;
         let anySignalInGroup = false;
         for (const idx of targetIndices) {
@@ -228,12 +228,12 @@ function showSignalContextMenu(clientX, clientY, signalIndex, signal) {
         
         if (isMultiple) {
             if (anySignalInGroup) {
-                // Si alguna señal está en un grupo, solo ofrecer crear subgrupo
+                // If any signal is in a group, only offer to create a subgroup
                 const parentShortName = GroupManager.getShortGroupName(existingGroupName);
                 addMenuItem(`Create Subgroup in "${parentShortName}"...`, () => {
                     wpPrompt('Enter subgroup name:', 'Subgroup', 'Create Subgroup').then((subName) => {
                         if (subName && subName.trim()) {
-                            // Subgrupo usa nombre jerárquico: "Parent/Child"
+                            // A subgroup uses a hierarchical name: "Parent/Child"
                             const fullName = existingGroupName + '/' + subName.trim();
                             document_wave.pushUndoSnapshot();
                             GroupManager.createGroup(document_wave, fullName, targetIndices);
@@ -242,7 +242,7 @@ function showSignalContextMenu(clientX, clientY, signalIndex, signal) {
                     });
                 });
             } else {
-                // Si ninguna señal está en un grupo, ofrecer crear grupo nuevo
+                // If no signal is in a group, offer to create a new group
                 addMenuItem('Create Group...', () => {
                     wpPrompt('Enter group name:', 'Group', 'Create Signal Group').then((groupName) => {
                         if (groupName && groupName.trim()) {
@@ -341,7 +341,7 @@ function showSignalContextMenu(clientX, clientY, signalIndex, signal) {
                 wpPrompt(promptText, groupShortName, 'Rename Group').then((newName) => {
                     if (newName && newName.trim()) {
                         document_wave.pushUndoSnapshot();
-                        // Si es un subgrupo, mantener la jerarquía del padre
+                        // If this is a subgroup, keep the parent hierarchy
                         const parentPath = GroupManager.getParentGroupName(existingGroupName);
                         const finalName = parentPath ? parentPath + '/' + newName.trim() : newName.trim();
                         GroupManager.renameGroup(document_wave, existingGroupName, finalName);
